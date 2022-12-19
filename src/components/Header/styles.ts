@@ -30,8 +30,13 @@ export const StyledHeader = styled.header`
    .lupa{
     
     color: var(--color-grey-1);
-    width: 1.5rem;
-    height: 1.5rem;
+    width: max-content;
+    height: 2.25rem;
+    background-color: var(--color-brand-1);
+    padding: 0.65rem ;
+    border-radius: var(--radius-2);
+    position: absolute;
+    margin: 0.5rem 0 0 12rem;;
 
    }
 
@@ -46,6 +51,12 @@ export const StyledHeader = styled.header`
    }
 
    .exit{
+    color: var(--color-grey-1);
+    width: 1.5rem;
+    height: 1.5rem;
+   }
+
+   .darkmode{
     color: var(--color-grey-1);
     width: 1.5rem;
     height: 1.5rem;

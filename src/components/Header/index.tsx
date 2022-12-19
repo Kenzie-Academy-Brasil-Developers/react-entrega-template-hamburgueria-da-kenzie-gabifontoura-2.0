@@ -8,10 +8,12 @@ import { StyledHeader } from "./styles";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import { ImSearch } from "react-icons/im";
 import { RxExit } from "react-icons/rx";
+import { MdDarkMode } from "react-icons/md";
 
 const Header = () => {
   const { userLogout } = useContext(UserContext);
-  const { search, setSearch } = useContext(CartContext);
+  const { search, setSearch, setIsModalVisible } =
+    useContext(CartContext);
 
   return (
     <StyledHeader>
@@ -27,15 +29,22 @@ const Header = () => {
             placeholder="Pesquise aqui"
             value={search}
             onChange={(event) => {
-              setSearch(event.target.value)}}
+              setSearch(event.target.value);
+            }}
           />
 
           <ImSearch className="lupa" />
 
-          <RiShoppingCart2Fill className="cartIcon" />
+          <MdDarkMode className="darkmode" />
+
+          <RiShoppingCart2Fill
+            className="cartIcon"
+            onClick={() => {
+              setIsModalVisible(true);
+            }}
+          />
 
           <RxExit className="exit" onClick={() => userLogout()} />
-         
         </nav>
       </ContainerHome>
     </StyledHeader>

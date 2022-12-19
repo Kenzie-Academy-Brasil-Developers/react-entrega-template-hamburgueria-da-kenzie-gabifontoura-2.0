@@ -1,11 +1,15 @@
-import { iProduct } from "../../../providers/CartContext";
+import { useContext } from "react";
+import { CartContext, iProduct } from "../../../providers/CartContext";
 import { StyledButton } from "../../../styles/buttons";
 import { StyledText } from "../../../styles/typography";
 import { StyledProductCard } from "./styles";
 
 
 
-const ProductCard = ({ id, name, category, price, img }: iProduct) => {
+const ProductCard = ({product, id, name, category, price, img }: iProduct | any) => {
+
+
+  const { addProduct } = useContext(CartContext);
   return (
     <StyledProductCard>
       <img src={img} alt={name} />
@@ -40,7 +44,7 @@ const ProductCard = ({ id, name, category, price, img }: iProduct) => {
           R$ {price.toFixed(2).replace(".", ",")}
         </StyledText>
 
-        <StyledButton buttonSize="medium" buttonStyle="primary">
+        <StyledButton buttonSize="medium" buttonStyle="primary" onClick={()=>addProduct(product)}>
           Adicionar
         </StyledButton>
       </div>

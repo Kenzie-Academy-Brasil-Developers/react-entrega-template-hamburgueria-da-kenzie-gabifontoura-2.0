@@ -6,7 +6,6 @@ import {
   useState,
 } from "react";
 import { toast } from "react-toastify";
-
 import { api } from "../services/api";
 import { UserContext } from "./UserContext";
 
@@ -31,19 +30,25 @@ interface iProductsResponse {
 interface iCartProviderData {
   cart: iProduct[];
 
+  setCart: React.Dispatch<React.SetStateAction<iProduct[]>>;
+
   addProduct: (product: iProduct) => void;
 
   deleteProduct: (product: iProduct) => void;
 
   products: iProduct[];
 
-  setProducts: React.Dispatch<React.SetStateAction<any>>;
+  setProducts: React.Dispatch<React.SetStateAction<iProduct[]>>;
 
   search: string;
 
   setSearch: React.Dispatch<React.SetStateAction<string>>;
 
   filteredProducts: iProduct[];
+
+  isModalVisible: boolean | null;
+
+  setIsModalVisible: React.Dispatch<React.SetStateAction<boolean | null>>;
 }
 
 export const CartContext = createContext<iCartProviderData>(
@@ -54,6 +59,7 @@ export const CartProvider = ({ children }: iCartProps) => {
   const [cart, setCart] = useState<iProduct[]>([]);
   const [products, setProducts] = useState<iProduct[] | any>([]);
   const [search, setSearch] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState<boolean | null>(null);
 
   const { setGlobalLoading } = useContext(UserContext);
 
@@ -89,10 +95,7 @@ export const CartProvider = ({ children }: iCartProps) => {
     if (cart.find((element) => element.id === product.id)) {
       setCart(
         cart.map((currentProduct) => {
-          if (
-            currentProduct.id === product.id &&
-            currentProduct.count !== undefined
-          ) {
+          if (currentProduct.count && currentProduct.id === product.id) {
             return { ...currentProduct, count: currentProduct.count + 1 };
           }
 
@@ -102,20 +105,16 @@ export const CartProvider = ({ children }: iCartProps) => {
     } else {
       setCart([...cart, { ...product, count: 1 }]);
     }
-    setCart([...cart, product]);
   };
 
   const deleteProduct = (productToBeDeleted: iProduct) => {
     toast.warn(`${productToBeDeleted.name} removido da sacola de compras`);
-    if (
-      productToBeDeleted.count !== undefined &&
-      productToBeDeleted.count > 1
-    ) {
+    if (productToBeDeleted.count && productToBeDeleted.count > 1) {
       setCart(
         cart.map((currentProduct) => {
           if (
-            currentProduct.id === productToBeDeleted.id &&
-            currentProduct.count !== undefined
+            currentProduct.count &&
+            currentProduct.id === productToBeDeleted.id
           ) {
             return { ...currentProduct, count: currentProduct.count - 1 };
           }
@@ -142,6 +141,7 @@ export const CartProvider = ({ children }: iCartProps) => {
     <CartContext.Provider
       value={{
         cart,
+        setCart,
         addProduct,
         deleteProduct,
         products,
@@ -149,6 +149,8 @@ export const CartProvider = ({ children }: iCartProps) => {
         search,
         setSearch,
         filteredProducts,
+        isModalVisible,
+        setIsModalVisible,
       }}
     >
       {children}

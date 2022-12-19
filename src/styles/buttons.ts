@@ -34,6 +34,11 @@ export const StyledButton = styled.button<iStyledButtonProps>`
           height: 2.5rem;
           padding: 0 1.25rem;
         `;
+        case "small":
+          return css`
+            height: 1.5rem;
+            padding: 0 0.5rem;
+          `;
     }
   }}
   ${({ buttonStyle }) => {
