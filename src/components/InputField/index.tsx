@@ -11,9 +11,10 @@ interface iInputProps extends InputHTMLAttributes<HTMLInputElement> {
     register?: UseFormRegisterReturn;
     placeholder: string;
     disabled?:boolean;
+    onChange?: ( React.ChangeEventHandler<HTMLInputElement> | undefined);
 }
 
-const InputField = ({ id, label, type, register, placeholder, disabled }: iInputProps ) => {
+const InputField = ({ id, label, type, register, placeholder, disabled, onChange }: iInputProps ) => {
   return (
     <StyledFieldset>
       <StyledLabel htmlFor={id}>{label}</StyledLabel>
@@ -23,6 +24,7 @@ const InputField = ({ id, label, type, register, placeholder, disabled }: iInput
         placeholder={placeholder}
         disabled={disabled}
         {...register}
+        onChange={onChange}
       />
     </StyledFieldset>
   );

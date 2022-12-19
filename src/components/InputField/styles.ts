@@ -18,7 +18,7 @@ export const StyledInput = styled.input`
   background-color: var(--color-grey-4);
   color: var(--color-grey-1);
   padding: 0 1rem;
-  height: 3.5rem;
+  height: 3rem;
   width: 100%;
 
   &:focus {

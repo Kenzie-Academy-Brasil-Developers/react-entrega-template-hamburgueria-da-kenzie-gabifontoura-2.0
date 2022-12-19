@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { UserProvider } from './providers/UserContext';
+import { CartProvider } from './providers/CartContext';
 
 
 const root = ReactDOM.createRoot(
@@ -17,7 +18,9 @@ root.render(
     <BrowserRouter>
       <GlobalStyle />
         <UserProvider>
-          <App />
+            <CartProvider>
+              <App />
+            </CartProvider>
         </UserProvider>
     </BrowserRouter>
     <ToastContainer

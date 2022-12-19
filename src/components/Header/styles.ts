@@ -16,4 +16,38 @@ export const StyledHeader = styled.header`
        height: 8rem;
    }
 
+
+   .nav{
+    width: max-content;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    
+   }
+
+
+   .lupa{
+    
+    color: var(--color-grey-1);
+    width: 1.5rem;
+    height: 1.5rem;
+
+   }
+
+   .search{
+    width: max-content;
+   }
+
+   .cartIcon{
+    color: var(--color-grey-1);
+    width: 1.5rem;
+    height: 1.5rem;
+   }
+
+   .exit{
+    color: var(--color-grey-1);
+    width: 1.5rem;
+    height: 1.5rem;
+   }
 `

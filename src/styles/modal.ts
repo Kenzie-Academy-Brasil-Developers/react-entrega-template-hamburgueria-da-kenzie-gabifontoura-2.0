@@ -27,7 +27,7 @@ export const StyledModalBox = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background-color: var(--color-grey-2);
+    background-color: var(--color-brand-1);
     padding: 1rem;
   }
 `;

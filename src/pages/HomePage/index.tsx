@@ -1,18 +1,18 @@
+import Header from "../../components/Header";
+import ProductsList from "../../components/ProductsList";
+import { ContainerHome } from "../../styles/Containers";
 
-import Header from '../../components/Header'
-// import ProductsList from '../../components/ProductsList'
-
-import { StyledHomePage } from './styles'
+import { StyledHomePage } from "./styles";
 
 const HomePage = () => {
   return (
     <StyledHomePage>
-
-        <Header />
-        {/* <ProductsList /> */}
-
+      <Header />
+      <ContainerHome>
+        <ProductsList />
+      </ContainerHome>
     </StyledHomePage>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

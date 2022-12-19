@@ -1,45 +1,42 @@
 import React, { useContext } from "react";
+import { CartContext } from "../../providers/CartContext";
 import { UserContext } from "../../providers/UserContext";
-import { StyledButton } from "../../styles/buttons";
 import { ContainerHome } from "../../styles/Containers";
 import { StyledText } from "../../styles/typography";
 import InputField from "../InputField";
 import { StyledHeader } from "./styles";
+import { RiShoppingCart2Fill } from "react-icons/ri";
+import { ImSearch } from "react-icons/im";
+import { RxExit } from "react-icons/rx";
 
-export interface iSearchValues {
-  search: string;
-}
 const Header = () => {
-
   const { userLogout } = useContext(UserContext);
+  const { search, setSearch } = useContext(CartContext);
+
   return (
     <StyledHeader>
       <ContainerHome>
         <StyledText tag="h1" fontSize="one">
           Burgers
         </StyledText>
-        <div className="flex">
+        <nav className="nav">
+          <InputField
+            type="search"
+            id="search"
+            label=""
+            placeholder="Pesquise aqui"
+            value={search}
+            onChange={(event) => {
+              setSearch(event.target.value)}}
+          />
 
-            <div className="flex align-center">
-              <InputField
-                type="text"
-                id="search"
-                label=""
-                placeholder="Pesquise aqui"
-              />
-              <StyledButton buttonSize="medium" buttonStyle="primary">
-                Pesquisar
-              </StyledButton>
-            </div>
+          <ImSearch className="lupa" />
 
-                <StyledButton
-                  buttonSize="medium"
-                  buttonStyle="darkGrey"
-                  onClick={() => userLogout()}
-                >
-                  Sair
-                </StyledButton>
-        </div>
+          <RiShoppingCart2Fill className="cartIcon" />
+
+          <RxExit className="exit" onClick={() => userLogout()} />
+         
+        </nav>
       </ContainerHome>
     </StyledHeader>
   );

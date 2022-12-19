@@ -6,7 +6,7 @@ import { api } from "../services/api";
 import { AxiosError } from "axios";
 import { iLoginFormValues } from "../components/forms/LoginForm";
 import { iRegisterFormValues } from "../components/forms/SignUpForm";
-import { iCardProps } from "../components/ProductsList/ProductCard";
+
 
 interface iDefaultErrorResponse {
   error: string;
@@ -31,18 +31,6 @@ interface iRegisterResponse {
   user: iUser;
 }
 
-// interface iProductsResponse {
-//   data: iCardProps[];
-// }
-
-// interface iProduct {
-//   id: number;
-//   name: string;
-//   category: string;
-//   price: number;
-//   img: string;
-// }
-
 interface iUserContext {
   user: iUser | null;
   userRegister: (formData: iRegisterFormValues) => void;
@@ -50,42 +38,39 @@ interface iUserContext {
   userLogout: () => void;
   globalLoading: boolean;
   setGlobalLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  products: iCardProps[] | null;
-  setProducts: React.Dispatch<React.SetStateAction<iCardProps[]>>;
-  search: string;
-  setSearch:React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const UserContext = createContext({} as iUserContext);
+
+
+export const UserContext = createContext<iUserContext>({} as iUserContext);
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
   const [globalLoading, setGlobalLoading] = useState(false);
-  const [user, setUser] = useState<iUser | null>(null);
-  const [products, setProducts] = useState([] as iCardProps[]);
-  const [search, setSearch] = useState("");
+  const [user, setUser] = useState<iUser | any>(null);
+  
   
 
   const navigate = useNavigate();
   
   useEffect(() => {
     const token = localStorage.getItem("@TOKEN");
+    const userID = localStorage.getItem("@USERid");
 
     (async () => {
       if (token) {
         try {
           setGlobalLoading(true);
-          const { data } = await api.get("/products ", {
+          const response = await api.get("/users/" + userID, {
             headers: {
               Authorization: `Bearer ${token}`
             },
           });
 
-          console.log(data);
-          setProducts(data)
-
-          // setProducts(data);
+         
+          setUser(response)
 
           navigate("/home");
+
         } catch (error) {
           console.log(error);
         } finally {
@@ -95,11 +80,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     })();
   }, []);
 
-  // const filteredProducts = products.filter(
-  //   (product) =>
-  //     product.name.toLowerCase().includes(search.toLowerCase()) ||
-  //     product.category.toLowerCase().includes(search.toLowerCase())
-  // );
 
   const userRegister = async (formData: iRegisterFormValues) => {
     try {
@@ -120,6 +100,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       const response = await api.post<iLoginResponse>("/login", formData);
 
       localStorage.setItem("@TOKEN", response.data.accessToken);
+      localStorage.setItem("@USERid", response.data.user.id + "");
 
       toast.success(response.statusText);
       setUser(response.data.user);
@@ -150,11 +131,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         userLogin,
         userLogout,
         globalLoading,
-        setGlobalLoading,
-        products,
-        setProducts,
-        search,
-        setSearch
+        setGlobalLoading
+  
       }}
     >
       {children}

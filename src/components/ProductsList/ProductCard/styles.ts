@@ -23,7 +23,6 @@ export const StyledProductCard = styled.li`
         width: 100%;
         height: 180px;
         object-fit: cover;
-        /* object-fit: contain; */
         background-color:  var(--color-background);
     }
   

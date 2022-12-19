@@ -1,27 +1,30 @@
-// import React, { useContext } from "react";
-// import { UserContext } from "../../providers/UserContext";
+import { useContext } from "react";
+import { CartContext, iProduct } from "../../providers/CartContext";
+
 import { StyledText } from "../../styles/typography";
-// import ProductCard from "./ProductCard";
+import ProductCard from "./ProductCard";
+
 import { StyledProductsList } from "./styles";
+
+
 
 const ProductsList = () => {
 
-// const { products } = useContext(UserContext);
+const { filteredProducts } = useContext(CartContext)
 
   return (
     <StyledProductsList>
-        <h1>Qualquer coisa</h1>
-      {/* {products.length > 0 ? products.map((product, index) => (
+       
+      {filteredProducts && filteredProducts.length > 0 ? filteredProducts.map((product: iProduct) => (
         <ProductCard
-          key={index}
-          product={product}
-         
-        /> */}
-      {/* )) :   */}
+              key={product.id} id={product.id} name={product.name} category={product.category} price={product.price} img={product.img}          
+        /> 
+     )) :  
       <StyledText tag="p" fontSize="two" textAlign="center" color="white">Adicione novas tecnologias</StyledText>
-      {/* } */}
+      }
     </StyledProductsList>
   );
 };
 
 export default ProductsList;
+
