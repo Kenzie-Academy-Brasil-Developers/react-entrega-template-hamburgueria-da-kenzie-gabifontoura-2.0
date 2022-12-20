@@ -22,7 +22,7 @@ export const StyledModalBox = styled.div`
   width: 100%;
   max-width: 400px;
   height: max-content;
-  background-color: var(--color-grey-3);
+  background-color: var(--color-grey-4);
   justify-content: center;
   align-items: center;
   border-radius: var(--radius-2);

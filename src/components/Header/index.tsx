@@ -12,8 +12,19 @@ import { MdDarkMode } from "react-icons/md";
 
 const Header = () => {
   const { userLogout } = useContext(UserContext);
-  const { search, setSearch, setIsModalVisible } =
+  const { search, setSearch, setIsModalVisible, cart } =
     useContext(CartContext);
+
+  const count = cart.map((product) => {
+    return product.count;
+  });
+
+  const sumItens = count.reduce(
+    (accumulator: number | undefined, currentValue: number | undefined) => {
+      return Number(accumulator) + Number(currentValue);
+    },
+    0
+  );
 
   return (
     <StyledHeader>
@@ -37,12 +48,16 @@ const Header = () => {
 
           <MdDarkMode className="darkmode" />
 
-          <RiShoppingCart2Fill
-            className="cartIcon"
+          <div
+            className="cart"
             onClick={() => {
               setIsModalVisible(true);
             }}
-          />
+          >
+            <RiShoppingCart2Fill className="cartIcon" />
+
+            <span className="countItens">{sumItens}</span>
+          </div>
 
           <RxExit className="exit" onClick={() => userLogout()} />
         </nav>

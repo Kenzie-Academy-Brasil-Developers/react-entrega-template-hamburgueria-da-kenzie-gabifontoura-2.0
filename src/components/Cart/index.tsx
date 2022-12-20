@@ -6,7 +6,7 @@ import { CartContext, iProduct } from "../../providers/CartContext";
 import useOutClick from "../../hooks/hookOutClick";
 import CartCard from "./CartCard";
 import { StyledButton } from "../../styles/buttons";
-import { StyledTotalCart } from "./styles";
+import { StyledEmptyCart, StyledTotalCart } from "./styles";
 
 const CartModal = () => {
   const { setIsModalVisible, cart, setCart } = useContext(CartContext);
@@ -30,7 +30,7 @@ const CartModal = () => {
           />
         </div>
 
-        {cart.length > 0 &&
+        {cart.length > 0 ? (
           cart.map((product: iProduct | any) => (
             <CartCard
               product={product}
@@ -42,31 +42,33 @@ const CartModal = () => {
               img={product.img}
               count={product.count}
             />
-          ))}
+          ))
+          
+        ) : (
+          <StyledEmptyCart>
+            <StyledText tag="h4">Sua sacola está vazia</StyledText>
+            <StyledText tag="h5">Adicione itens</StyledText>
+          </StyledEmptyCart>
+        )}
 
         <StyledTotalCart>
-            <div className="flex between">
-                <StyledText tag="h4">Total</StyledText>
-                <StyledText tag="h4">
-                    R$ {sum.toFixed(2).replace(".", ",")}
-                </StyledText>
-
-            </div>
-
-            <StyledButton
+          <div className="flex between">
+            <StyledText tag="h4">Total</StyledText>
+            <StyledText tag="h4">
+              R$ {sum.toFixed(2).replace(".", ",")}
+            </StyledText>
+          </div>
+          <StyledButton
             buttonSize="default"
-            buttonStyle="secondary"
-            color="black"
+            buttonStyle="darkGrey"
             onClick={() => {
-                setCart([])
-                setIsModalVisible(false)
+              setCart([]);
+              setIsModalVisible(false);
             }}
-            >
+          >
             Remover todos
-            </StyledButton>
+          </StyledButton>
         </StyledTotalCart>
-  
-
       </StyledModalBox>
     </StyledModalBg>
   );

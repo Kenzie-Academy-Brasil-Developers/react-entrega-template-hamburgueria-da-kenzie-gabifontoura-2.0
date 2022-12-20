@@ -7,6 +7,6 @@ export const StyledHomePage = styled.main`
   border: none;
   width: 100vw;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: none;
 
 `;

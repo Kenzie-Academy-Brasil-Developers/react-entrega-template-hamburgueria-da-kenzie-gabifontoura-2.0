@@ -13,7 +13,7 @@ const CartCard = ({
   img,
   count,
 }: iProduct | any) => {
-  const { deleteProduct, addProduct } = useContext(CartContext);
+  const { deleteProduct, addProduct, cart , setCart } = useContext(CartContext);
 
   return (
     <StyledCartCard>
@@ -49,7 +49,11 @@ const CartCard = ({
           </StyledButton>
         </div>
 
-        <button onClick={() => deleteProduct(product)}>Remover</button>
+        <button onClick={() => setCart(
+        cart.filter(
+          (currentProduct) => currentProduct.id !== product.id
+        )
+      )}>Remover</button>
       </div>
     </StyledCartCard>
   );

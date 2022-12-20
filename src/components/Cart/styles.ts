@@ -17,4 +17,5 @@ export const StyledEmptyCart = styled.div`
   flex-direction: column;
   margin: 5rem 0;
   gap: 1rem;
+  text-align: center;
 `;

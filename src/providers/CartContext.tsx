@@ -23,7 +23,7 @@ export interface iProduct {
 }
 
 interface iProductsResponse {
-  (): Promise<void>;
+
   data: iProduct[];
 }
 
@@ -49,6 +49,8 @@ interface iCartProviderData {
   isModalVisible: boolean | null;
 
   setIsModalVisible: React.Dispatch<React.SetStateAction<boolean | null>>;
+
+ 
 }
 
 export const CartContext = createContext<iCartProviderData>(
@@ -56,8 +58,11 @@ export const CartContext = createContext<iCartProviderData>(
 );
 
 export const CartProvider = ({ children }: iCartProps) => {
-  const [cart, setCart] = useState<iProduct[]>([]);
-  const [products, setProducts] = useState<iProduct[] | any>([]);
+
+    const localStorageCart = localStorage.getItem("@CURRENT_SALE");
+
+  const [cart, setCart] = useState<iProduct[]>(localStorageCart ? JSON.parse(localStorageCart) : []);
+  const [products, setProducts] = useState<iProduct[]>([]);
   const [search, setSearch] = useState("");
   const [isModalVisible, setIsModalVisible] = useState<boolean | null>(null);
 
@@ -90,6 +95,11 @@ export const CartProvider = ({ children }: iCartProps) => {
     }
   }, []);
 
+
+  useEffect(() => {
+    localStorage.setItem("@CURRENT_SALE", JSON.stringify(cart));
+  }, [cart]);
+
   const addProduct = (product: iProduct) => {
     toast.success(`${product.name} foi adicionado a sacola de compras`);
     if (cart.find((element) => element.id === product.id)) {
@@ -99,7 +109,7 @@ export const CartProvider = ({ children }: iCartProps) => {
             return { ...currentProduct, count: currentProduct.count + 1 };
           }
 
-          return product;
+          return currentProduct;
         })
       );
     } else {
