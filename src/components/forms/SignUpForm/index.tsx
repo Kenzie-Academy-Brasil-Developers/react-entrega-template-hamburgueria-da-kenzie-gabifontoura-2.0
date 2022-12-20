@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -11,20 +11,15 @@ import { registerSchema } from "./registerSchema";
 import { UserContext } from "../../../providers/UserContext";
 import { NavLink } from "react-router-dom";
 
-
-
-export interface iRegisterFormValues{
-
-    name: string;
-    email: string;
-    password: string;
-    confirmPassword:string;
-
+export interface iRegisterFormValues {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
 
 const SignUpForm = () => {
   const navigate = useNavigate();
-
 
   const { globalLoading, userRegister } = useContext(UserContext);
 
@@ -40,7 +35,6 @@ const SignUpForm = () => {
       email: "",
       password: "",
       confirmPassword: "",
-
     },
   });
 
@@ -52,17 +46,14 @@ const SignUpForm = () => {
 
   return (
     <StyledForm noValidate onSubmit={handleSubmit(submit)}>
-        
-        <div className="flex between">
-
-            <StyledText tag="h2" fontSize="two" textAlign="center">
-                Crie sua conta
-            </StyledText>
-                    <NavLink to="/" className="main-nav-active">
-                    Voltar
-                </NavLink>
-        </div>
-
+      <div className="flex between">
+        <StyledText tag="h2" fontSize="two" textAlign="center">
+          Crie sua conta
+        </StyledText>
+        <NavLink to="/" className="main-nav-active">
+          Voltar
+        </NavLink>
+      </div>
 
       <InputField
         type="text"
@@ -119,9 +110,6 @@ const SignUpForm = () => {
           {errors.confirmPassword.message}
         </StyledText>
       )}
-
-   
-
 
       <StyledButton
         type="submit"

@@ -22,11 +22,6 @@ export interface iProduct {
   count?: number | undefined;
 }
 
-interface iProductsResponse {
-
-  data: iProduct[];
-}
-
 interface iCartProviderData {
   cart: iProduct[];
 
@@ -49,8 +44,6 @@ interface iCartProviderData {
   isModalVisible: boolean | null;
 
   setIsModalVisible: React.Dispatch<React.SetStateAction<boolean | null>>;
-
- 
 }
 
 export const CartContext = createContext<iCartProviderData>(
@@ -58,46 +51,49 @@ export const CartContext = createContext<iCartProviderData>(
 );
 
 export const CartProvider = ({ children }: iCartProps) => {
+  const localStorageCart = localStorage.getItem("@CURRENT_SALE");
 
-    const localStorageCart = localStorage.getItem("@CURRENT_SALE");
-
-  const [cart, setCart] = useState<iProduct[]>(localStorageCart ? JSON.parse(localStorageCart) : []);
+  const [cart, setCart] = useState<iProduct[]>(
+    localStorageCart ? JSON.parse(localStorageCart) : []
+  );
   const [products, setProducts] = useState<iProduct[]>([]);
   const [search, setSearch] = useState("");
   const [isModalVisible, setIsModalVisible] = useState<boolean | null>(null);
 
   const { setGlobalLoading } = useContext(UserContext);
 
-  useEffect(() => {
-    const token = localStorage.getItem("@TOKEN");
+  const token = localStorage.getItem("@TOKEN");
 
+  async function getApi() {
+    const response = await api.get<iProduct[]>("/products", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  }
+
+  useEffect(() => {
     if (token) {
-      (async (): Promise<iProductsResponse | undefined> => {
+      const handleGetProducts = async () => {
         try {
           setGlobalLoading(true);
-          const response = await api.get<iProductsResponse, any>("/products", {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
+          const response = await getApi();
 
-          const productsListAPI = response.data;
-
-          setProducts(productsListAPI);
-
-          return response;
+          setProducts(response);
         } catch (error) {
           console.log(error);
         } finally {
           setGlobalLoading(false);
         }
-      })();
+      };
+      handleGetProducts();
     }
-  }, []);
-
+  }, [token]);
 
   useEffect(() => {
-    localStorage.setItem("@CURRENT_SALE", JSON.stringify(cart));
+    cart.length > 0 &&
+      localStorage.setItem("@CURRENT_SALE", JSON.stringify(cart));
   }, [cart]);
 
   const addProduct = (product: iProduct) => {

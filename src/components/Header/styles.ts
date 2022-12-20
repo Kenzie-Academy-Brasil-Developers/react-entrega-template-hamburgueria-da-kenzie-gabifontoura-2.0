@@ -1,83 +1,103 @@
-import styled from "styled-components"
-
+import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-    width: 100%;
-    background-color:${({theme}) => theme.colors.colorGrey1};
-    position: fixed;
-    top:0;
-    z-index: 1;
-    height: max-content;
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.colorGrey1};
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  height: 6rem;
+  padding: 1rem;
+
+  @media (max-width: 400px) {
+    flex-direction: column;
     
+  }
 
-
-    @media (max-width: 800px) {
-       width: 100%;
-       margin: 0;
-       height: 8rem;
-   }
-
-
-   .nav{
-    width: max-content;
+  .nav {
     display: flex;
     gap: 2rem;
     justify-content: space-between;
     align-items: center;
-    
-   }
 
 
-   .lupa{
-    
+    @media (max-width: 400px) {
+      gap: 1.5rem;
+
+    }
+  }
+
+  .lupa {
     color: var(--color-grey-1);
     width: max-content;
     height: 2.25rem;
     background-color: var(--color-brand-1);
-    padding: 0.65rem ;
+    padding: 0.65rem;
     border-radius: var(--radius-2);
     position: absolute;
-    margin: 0.5rem 0 0 12.5rem;;
+    top: 1.8rem;
+    margin-left: 12.25rem;
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
 
-   }
-
-   .search{
-    width: max-content;
-   }
-
-   .cart{
-    color: ${({theme}) => theme.colors.colorGrey4};
-    width: 3.5rem;
+  .lupa-mobile {
+    color: ${({ theme }) => theme.colors.colorGrey4};
+    margin-right: 0.5rem;
+    width: 1.25rem;
     height: max-content;
-    padding: 1rem;
-    cursor: pointer;
-   }
 
-   .exit{
-    color: ${({theme}) => theme.colors.colorGrey4};
-    width: 1.5rem;
-    height: 1.5rem;
-    cursor: pointer;
-   }
+    @media (min-width: 700px) {
+      display: none;
+    }
+  }
 
-   .darkmode{
-    color: ${({theme}) => theme.colors.colorGrey4};
-    width: 1.5rem;
-    height: 1.5rem;
-    cursor: pointer;
-   }
+  .searchBar {
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
 
-   .countItens{
-    background-color: var(--color-brand-1);
-    width:  max-content;
+  .cartBtn {
+    width: 1.25rem;
+    height: max-content;
+    cursor: pointer;
+  }
+
+  .cartIcon {
+    color: ${({ theme }) => theme.colors.colorGrey4};
     height: 1.25rem;
-    padding: 0.125rem 0.3rem;
+    width: 100%;
+  }
+
+  .exit {
+    color: ${({ theme }) => theme.colors.colorGrey4};
+    height: 1.25rem;
+    width: 100%;
+  }
+
+  .darkmode {
+    color: ${({ theme }) => theme.colors.colorGrey4};
+    height: 1.25rem;
+    width: 100%;
+  }
+
+  .countItens {
+    background-color: var(--color-brand-1);
+    width: max-content;
+    height: 1.2rem;
+    padding: 0.12rem 0.3rem;
     color: var(--color-text);
     font-size: 0.7rem;
     border-radius: var(--radius-2);
     align-items: center;
     position: absolute;
-    top:1.2rem;
+    top: 0.5rem;
     
-   }
-`
+    @media (min-width: 700px) {
+      top:1.5rem;
+     
+    }
+  }
+`;

@@ -33,9 +33,9 @@ const CartModal = () => {
         </div>
 
         {cart.length > 0 ? (
-          cart.map((product: iProduct | any) => (
+          cart.map((product: iProduct) => (
             <CartCard
-              product={product}
+             
               key={product.id}
               id={product.id}
               name={product.name}

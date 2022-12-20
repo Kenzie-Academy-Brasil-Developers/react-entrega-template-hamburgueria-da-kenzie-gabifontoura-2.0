@@ -33,14 +33,16 @@ export const StyledText = styled(BaseText)<iStyledTextProps>`
         `;
       case "two":
         return css`
-          font-size: 2rem;
+          font-size: 2.5rem;
           text-overflow: ellipsis;
+          color: var(--color-brand-1);
+
 
           @media (max-width: 800px) {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
           }
           @media (max-width: 400px) {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
           }
         `;
       case "three":
@@ -55,11 +57,23 @@ export const StyledText = styled(BaseText)<iStyledTextProps>`
             font-size: 1.25rem;
           }
         `;
+         case "four":
+          return css`
+            font-size: 4rem;
+            text-overflow: ellipsis;
+  
+            @media (max-width: 800px) {
+              font-size: 1.2rem;
+            }
+            @media (max-width: 400px) {
+              font-size: 1rem;
+            }
+          `;
 
       case "bodyText":
         return css`
           font-size: var(--font-size-text-4);
-          color: var(--color-grey-1);
+          
           @media (max-width: 800px) {
             font-size: var(--font-size-text-3);
           }

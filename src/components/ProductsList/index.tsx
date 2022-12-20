@@ -10,9 +10,8 @@ const ProductsList = () => {
   return (
     <StyledProductsList>
       {filteredProducts.length > 0 &&
-        filteredProducts.map((product: iProduct | any) => (
+        filteredProducts.map((product: iProduct) => (
           <ProductCard
-            product={product}
             key={product.id}
             id={product.id}
             name={product.name}
@@ -26,3 +25,7 @@ const ProductsList = () => {
 };
 
 export default ProductsList;
+
+
+
+

@@ -1,18 +1,19 @@
-
 import LoginForm from "../../components/forms/LoginForm";
-import { ContainerForms } from "../../styles/Containers";
+import { Container } from "../../styles/Containers";
 import { StyledText } from "../../styles/typography";
 import { StyledLoginPage } from "./styles";
 
 const LoginPage = () => {
   return (
     <StyledLoginPage>
-      <ContainerForms>
-   
-        <LoginForm />
-        <StyledText tag="h1" fontSize="one">Burgers</StyledText>
-
-      </ContainerForms>
+      <Container>
+        <div className="flex column padding">
+          <StyledText tag="h1" fontSize="one" textAlign="center">
+            Burgers
+          </StyledText>
+          <LoginForm />
+        </div>
+      </Container>
     </StyledLoginPage>
   );
 };

@@ -5,8 +5,9 @@ export const StyledRegisterPage = styled.main`
   display: flex;
   flex-direction: column;
   border: none;
-  width: 100vw;
   min-height: 100vh;
-  overflow-x: hidden;
-  padding: 2rem;
+  padding-top: 3rem;
+  width: 100%;
+
+ 
 `;

@@ -1,14 +1,11 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../providers/CartContext";
 import { UserContext } from "../../providers/UserContext";
-import { ContainerHome } from "../../styles/Containers";
+import { Container } from "../../styles/Containers";
 import { StyledText } from "../../styles/typography";
 import InputField from "../InputField";
 import { StyledHeader } from "./styles";
-import { RiShoppingCart2Fill } from "react-icons/ri";
-import { ImSearch } from "react-icons/im";
-import { RxExit } from "react-icons/rx";
-import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { MdDarkMode, MdLightMode, MdLogout, MdSearch, MdShoppingCart } from "react-icons/md";
 
 const Header = () => {
   const { userLogout, darkMode, setDarkMode } = useContext(UserContext);
@@ -28,12 +25,13 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <ContainerHome>
+      <Container>
         <StyledText tag="h1" fontSize="one">
           Burgers
         </StyledText>
         <nav className="nav">
           <InputField
+            className="searchBar"
             type="search"
             id="search"
             label=""
@@ -44,24 +42,26 @@ const Header = () => {
             }}
           />
 
-          <ImSearch className="lupa" />
+          <MdSearch className="lupa" />
+          <MdSearch className="lupa-mobile" />
 
-          <button className="darkmode" onClick={() => setDarkMode(!darkMode)}>{ darkMode ? <MdLightMode /> : <MdDarkMode  /> }</button>
+          <button  onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? <MdLightMode className="darkmode" /> : <MdDarkMode className="darkmode"/>}
+          </button>
 
-          <div
-            className="cart"
+          <button
+            className="cartBtn"
             onClick={() => {
               setIsModalVisible(true);
             }}
           >
-            <RiShoppingCart2Fill className="cartIcon" />
-
+            <MdShoppingCart className="cartIcon" />
             <span className="countItens">{sumItens}</span>
-          </div>
+          </button>
 
-          <RxExit className="exit" onClick={() => userLogout()} />
+          <button   onClick={() => userLogout()} ><MdLogout className="exit"/></button>
         </nav>
-      </ContainerHome>
+      </Container>
     </StyledHeader>
   );
 };

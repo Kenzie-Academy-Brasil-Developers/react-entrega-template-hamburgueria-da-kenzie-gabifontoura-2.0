@@ -12,9 +12,10 @@ export const StyledProductCard = styled.li`
   .content {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
     padding: 2rem 1rem;
     width: 13rem;
+    height: 17rem;
+    justify-content: space-between;
   }
   img {
     width: 100%;

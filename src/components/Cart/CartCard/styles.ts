@@ -33,6 +33,10 @@ export const StyledCartCard = styled.li`
     border-radius: var(--radius-1);
     padding: 0.25rem;
   }
+
+  .trashIcon{
+    color: ${({theme}) => theme.colors.colorGrey3};;
+  }
 `;
 
 

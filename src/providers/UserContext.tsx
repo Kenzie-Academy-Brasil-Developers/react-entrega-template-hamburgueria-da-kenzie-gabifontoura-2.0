@@ -7,7 +7,6 @@ import { AxiosError } from "axios";
 import { iLoginFormValues } from "../components/forms/LoginForm";
 import { iRegisterFormValues } from "../components/forms/SignUpForm";
 
-
 interface iDefaultErrorResponse {
   error: string;
 }
@@ -38,22 +37,27 @@ interface iUserContext {
   userLogout: () => void;
   globalLoading: boolean;
   setGlobalLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  darkMode:boolean;
-  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
+  darkMode: boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
-
 
 export const UserContext = createContext<iUserContext>({} as iUserContext);
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
+  const themeStorage = localStorage.getItem("@THEME_PREFERENCE");
+
   const [globalLoading, setGlobalLoading] = useState(false);
   const [user, setUser] = useState<iUser | any>(null);
-  const [darkMode, setDarkMode] = useState(false);
-  
+  const [darkMode, setDarkMode] = useState<boolean>(
+    themeStorage ? JSON.parse(themeStorage) : true
+  );
+
+  useEffect(() => {
+    localStorage.setItem("@THEME_PREFERENCE", JSON.stringify(darkMode));
+  }, [darkMode]);
 
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const token = localStorage.getItem("@TOKEN");
     const userID = localStorage.getItem("@USERid");
@@ -64,15 +68,13 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
           setGlobalLoading(true);
           const response = await api.get("/users/" + userID, {
             headers: {
-              Authorization: `Bearer ${token}`
+              Authorization: `Bearer ${token}`,
             },
           });
 
-         
-          setUser(response)
+          setUser(response);
 
           navigate("/home");
-
         } catch (error) {
           console.log(error);
         } finally {
@@ -81,7 +83,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       }
     })();
   }, []);
-
 
   const userRegister = async (formData: iRegisterFormValues) => {
     try {
@@ -106,7 +107,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
       toast.success(response.statusText);
       setUser(response.data.user);
- 
 
       navigate("/home");
     } catch (error) {
@@ -126,8 +126,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     navigate("/");
   }
 
- 
-
   return (
     <UserContext.Provider
       value={{
@@ -138,14 +136,10 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         globalLoading,
         setGlobalLoading,
         darkMode,
-        setDarkMode
-  
+        setDarkMode,
       }}
     >
       {children}
     </UserContext.Provider>
   );
 };
-
-
-

@@ -3,7 +3,7 @@ import CartModal from "../../components/Cart";
 import Header from "../../components/Header";
 import ProductsList from "../../components/ProductsList";
 import { CartContext } from "../../providers/CartContext";
-import { ContainerHome } from "../../styles/Containers";
+import { Container } from "../../styles/Containers";
 
 import { StyledHomePage } from "./styles";
 
@@ -13,9 +13,9 @@ const HomePage = () => {
     <StyledHomePage>
       {isModalVisible && <CartModal />}
       <Header />
-      <ContainerHome>
+      <Container>
         <ProductsList />
-      </ContainerHome>
+      </Container>
     </StyledHomePage>
   );
 };

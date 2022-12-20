@@ -14,6 +14,9 @@ function App() {
 
   const {globalLoading, darkMode} = useContext(UserContext)
 
+
+ 
+
   return (
     <div className="App">
       {globalLoading ? (

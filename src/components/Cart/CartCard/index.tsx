@@ -6,22 +6,31 @@ import { StyledCartCard } from "./styles";
 import { FaTrash } from "react-icons/fa";
 
 const CartCard = ({
-  product,
+  
   id,
   name,
   category,
   price,
   img,
   count,
-}: iProduct | any) => {
+}: iProduct) => {
   const { deleteProduct, addProduct, cart, setCart } = useContext(CartContext);
+
+  const product = {
+    id,
+    name,
+    category,
+    price,
+    img,
+    count,
+  };
 
   return (
     <StyledCartCard>
       <div className="flex gap-1rem">
         <img src={img} alt={name} />
         <div className="flex column gap-1rem">
-          <StyledText tag="h3" fontSize="two" fontWeight={700} textAlign="left">
+          <StyledText tag="h3" fontSize="three" fontWeight={700} textAlign="left">
             {name}
           </StyledText>
 
@@ -63,7 +72,7 @@ const CartCard = ({
             )
           }
         >
-          <FaTrash />
+          <FaTrash className="trashIcon"/>
         </button>
       </div>
     </StyledCartCard>
