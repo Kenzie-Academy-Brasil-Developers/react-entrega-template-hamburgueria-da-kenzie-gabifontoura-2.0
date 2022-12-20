@@ -9,20 +9,20 @@ export const StyledFieldset = styled.fieldset`
 `;
 
 export const StyledLabel = styled.label`
-  color: var(--color-grey-1);
+  color: ${({ theme }) => theme.colors.colorText};
 `;
 
 export const StyledInput = styled.input`
-  border: 1px solid var(--color-grey-3);
+  border: 1px solid ${({ theme }) => theme.colors.colorGrey3};
   border-radius: var(--radius-1);
-  background-color: var(--color-grey-4);
-  color: var(--color-grey-1);
+  background-color: ${({ theme }) => theme.colors.colorGrey1};
+  color: ${({ theme }) => theme.colors.colorText};
   padding: 0 1rem;
   height: 3rem;
   width: 100%;
 
   &:focus {
-    outline: 2px solid var(--color-brand-1);
+    outline: 2px solid ${({ theme }) => theme.colors.colorBrand1};
   }
 
   &:disabled {

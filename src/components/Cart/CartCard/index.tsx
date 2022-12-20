@@ -3,6 +3,7 @@ import { CartContext, iProduct } from "../../../providers/CartContext";
 import { StyledButton } from "../../../styles/buttons";
 import { StyledText } from "../../../styles/typography";
 import { StyledCartCard } from "./styles";
+import { FaTrash } from "react-icons/fa";
 
 const CartCard = ({
   product,
@@ -13,7 +14,7 @@ const CartCard = ({
   img,
   count,
 }: iProduct | any) => {
-  const { deleteProduct, addProduct, cart , setCart } = useContext(CartContext);
+  const { deleteProduct, addProduct, cart, setCart } = useContext(CartContext);
 
   return (
     <StyledCartCard>
@@ -24,13 +25,19 @@ const CartCard = ({
             {name}
           </StyledText>
 
-          <StyledText tag="h5" fontWeight={400}>
-            {category}
-          </StyledText>
+          <div className="flex gap-1rem align-center">
+            <StyledText tag="h5" fontWeight={400}>
+              R$ {price.toFixed(2).replace(".", ",")}
+            </StyledText>
+
+            <StyledText tag="h5" fontWeight={400}>
+              {category}
+            </StyledText>
+          </div>
         </div>
       </div>
 
-      <div className="flex column gap-1rem">
+      <div className="flex column gap-1rem end">
         <div className="flex gap-05rem align-center counter">
           <StyledButton
             buttonStyle="primary"
@@ -49,11 +56,15 @@ const CartCard = ({
           </StyledButton>
         </div>
 
-        <button onClick={() => setCart(
-        cart.filter(
-          (currentProduct) => currentProduct.id !== product.id
-        )
-      )}>Remover</button>
+        <button
+          onClick={() =>
+            setCart(
+              cart.filter((currentProduct) => currentProduct.id !== product.id)
+            )
+          }
+        >
+          <FaTrash />
+        </button>
       </div>
     </StyledCartCard>
   );

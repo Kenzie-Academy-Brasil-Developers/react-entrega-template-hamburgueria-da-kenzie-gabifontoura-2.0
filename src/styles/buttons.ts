@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 
-interface iStyledButtonProps{
- buttonStyle: string;
- buttonSize: string;
- color?: string;
+interface iStyledButtonProps {
+  buttonStyle: string;
+  buttonSize: string;
+  color?: string;
 }
 
 export const StyledButton = styled.button<iStyledButtonProps>`
@@ -16,10 +16,8 @@ export const StyledButton = styled.button<iStyledButtonProps>`
   color: ${({ color }) => (color ? color : "white")};
   font-size: 1rem;
 
-  
   &:hover {
     filter: brightness(1.2);
-
   }
   ${({ buttonSize }) => {
     // eslint-disable-next-line default-case
@@ -34,11 +32,11 @@ export const StyledButton = styled.button<iStyledButtonProps>`
           height: 2.5rem;
           padding: 0 1.25rem;
         `;
-        case "small":
-          return css`
-            height: 1.5rem;
-            padding: 0 0.5rem;
-          `;
+      case "small":
+        return css`
+          height: 1.5rem;
+          padding: 0 0.5rem;
+        `;
     }
   }}
   ${({ buttonStyle }) => {
@@ -46,13 +44,14 @@ export const StyledButton = styled.button<iStyledButtonProps>`
     switch (buttonStyle) {
       case "primary":
         return css`
-          background-color:var(--color-brand-1);
-          color: var(--color-text);
+          background-color:${({ theme }) => theme.colors.colorBrand1};;
+          
           
 
           &:hover {
-            background-color:var(--color-brand-2);
-            color: #000000}
+            background-color:${({ theme }) => theme.colors.colorBrand2};
+            color: ${({ theme }) => theme.colors.colorText};
+          }
 
           }
           &:disabled{
@@ -62,20 +61,14 @@ export const StyledButton = styled.button<iStyledButtonProps>`
         `;
       case "secondary":
         return css`
-          background-color:var(--color-brand-2);
-         
+          background-color: ${({ theme }) => theme.colors.colorGrey1};
 
-          &:hover {
-            background-color:var(--color-brand-2);
-          
-            &:disabled{
-              background:var(--color-grey-3);
-              
-            }
-            `;
+          color: ${({ theme }) => theme.colors.colorGrey4};
+
+          &:disabled {
+            background: var(--color-grey-3);
+          }
+        `;
     }
   }}
-
-
 `;
-

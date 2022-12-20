@@ -38,6 +38,8 @@ interface iUserContext {
   userLogout: () => void;
   globalLoading: boolean;
   setGlobalLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  darkMode:boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 
@@ -47,7 +49,7 @@ export const UserContext = createContext<iUserContext>({} as iUserContext);
 export const UserProvider = ({ children }: iUserProviderProps) => {
   const [globalLoading, setGlobalLoading] = useState(false);
   const [user, setUser] = useState<iUser | any>(null);
-  
+  const [darkMode, setDarkMode] = useState(false);
   
 
   const navigate = useNavigate();
@@ -134,7 +136,9 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         userLogin,
         userLogout,
         globalLoading,
-        setGlobalLoading
+        setGlobalLoading,
+        darkMode,
+        setDarkMode
   
       }}
     >

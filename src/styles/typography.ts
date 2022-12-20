@@ -14,7 +14,7 @@ export const StyledText = styled(BaseText)<iStyledTextProps>`
   justify-content: ${({ justifyContent }) => justifyContent};
   text-align: ${({ textAlign }) => textAlign};
   font-weight: ${({ fontWeight }) => fontWeight};
-  color: ${({ color }) => (color ? color : "white")};
+  color: ${({ color }) => (color ? color : ({theme}) => theme.colors.colorText)};
   font-size: ${({ fontSize }) => {
     // eslint-disable-next-line default-case
     switch (fontSize) {

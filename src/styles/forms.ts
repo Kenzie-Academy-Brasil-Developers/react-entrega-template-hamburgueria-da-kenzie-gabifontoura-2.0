@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledForm = styled.form`
   background-color: transparent;
-  border: 2px solid var(--color-grey-3);
+  border: 2px solid ${({theme}) => theme.colors.colorGrey3};
   border-radius: var(--radius-2);
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@ export const StyledForm = styled.form`
     color: var(--color-grey-1);
     text-align: center;
     justify-content: center;
-    background-color: var(--color-grey-3);
+    background-color: ${({theme}) => theme.colors.colorGrey3};
     height: 2.5rem;
     border-radius: var(--radius-1);
     padding: 0.65rem 1rem;

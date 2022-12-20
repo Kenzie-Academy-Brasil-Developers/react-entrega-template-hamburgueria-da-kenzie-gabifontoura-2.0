@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledCartCard = styled.li`
-  background:var(--color-grey-4);
+  background:${({theme}) => theme.colors.colorGrey1};
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -21,7 +21,7 @@ export const StyledCartCard = styled.li`
     width: 4rem;
     height: 4rem;
     object-fit: cover;
-    background-color: var(--color-background);
+    background-color: ${({theme}) => theme.colors.colorBackGround};
   }
 
   button:hover {
@@ -29,7 +29,7 @@ export const StyledCartCard = styled.li`
   }
 
   .counter{
-    background-color: var(--color-background);
+    background-color: ${({theme}) => theme.colors.colorBackGround};
     border-radius: var(--radius-1);
     padding: 0.25rem;
   }

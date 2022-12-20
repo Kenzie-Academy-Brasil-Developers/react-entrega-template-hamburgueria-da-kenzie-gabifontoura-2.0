@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 export const StyledHeader = styled.header`
     width: 100%;
-    background-color: var(--color-grey-4);
+    background-color:${({theme}) => theme.colors.colorGrey1};
     position: fixed;
     top:0;
     z-index: 1;
@@ -46,7 +46,7 @@ export const StyledHeader = styled.header`
    }
 
    .cart{
-    color: var(--color-grey-1);
+    color: ${({theme}) => theme.colors.colorGrey4};
     width: 3.5rem;
     height: max-content;
     padding: 1rem;
@@ -54,14 +54,14 @@ export const StyledHeader = styled.header`
    }
 
    .exit{
-    color: var(--color-grey-1);
+    color: ${({theme}) => theme.colors.colorGrey4};
     width: 1.5rem;
     height: 1.5rem;
     cursor: pointer;
    }
 
    .darkmode{
-    color: var(--color-grey-1);
+    color: ${({theme}) => theme.colors.colorGrey4};
     width: 1.5rem;
     height: 1.5rem;
     cursor: pointer;

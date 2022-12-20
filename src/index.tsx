@@ -1,40 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { GlobalStyle } from './styles/global';
-import { BrowserRouter } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
-import { UserProvider } from './providers/UserContext';
-import { CartProvider } from './providers/CartContext';
-
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { GlobalStyle } from "./styles/global";
+import { BrowserRouter } from "react-router-dom";
+import { UserProvider } from "./providers/UserContext";
+import { CartProvider } from "./providers/CartContext";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <GlobalStyle />
-        <UserProvider>
-            <CartProvider>
-              <App />
-            </CartProvider>
-        </UserProvider>
+      <UserProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </UserProvider>
     </BrowserRouter>
-    <ToastContainer
-          position="bottom-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
   </React.StrictMode>
 );
 

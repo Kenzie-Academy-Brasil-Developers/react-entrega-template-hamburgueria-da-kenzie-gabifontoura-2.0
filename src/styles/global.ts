@@ -77,6 +77,10 @@ export const GlobalStyle = createGlobalStyle`
         align-items: center;
     }
 
+    .end{
+        align-items: end;
+    }
+
     .gap-1rem{
         gap:1rem;
     }

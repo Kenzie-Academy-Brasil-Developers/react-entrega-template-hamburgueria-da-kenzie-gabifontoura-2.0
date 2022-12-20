@@ -8,10 +8,10 @@ import { StyledHeader } from "./styles";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import { ImSearch } from "react-icons/im";
 import { RxExit } from "react-icons/rx";
-import { MdDarkMode } from "react-icons/md";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 const Header = () => {
-  const { userLogout } = useContext(UserContext);
+  const { userLogout, darkMode, setDarkMode } = useContext(UserContext);
   const { search, setSearch, setIsModalVisible, cart } =
     useContext(CartContext);
 
@@ -46,7 +46,7 @@ const Header = () => {
 
           <ImSearch className="lupa" />
 
-          <MdDarkMode className="darkmode" />
+          <button className="darkmode" onClick={() => setDarkMode(!darkMode)}>{ darkMode ? <MdLightMode /> : <MdDarkMode  /> }</button>
 
           <div
             className="cart"

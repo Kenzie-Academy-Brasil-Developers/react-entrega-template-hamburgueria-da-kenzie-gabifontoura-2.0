@@ -21,7 +21,9 @@ const CartModal = () => {
     <StyledModalBg>
       <StyledModalBox ref={modalRef}>
         <div className="modal-header">
-          <StyledText tag="h3">Carrinho de compras</StyledText>
+          <StyledText tag="h3" color="white">
+            Carrinho de compras
+          </StyledText>
           <CgClose
             color="white"
             onClick={() => {
@@ -43,7 +45,6 @@ const CartModal = () => {
               count={product.count}
             />
           ))
-          
         ) : (
           <StyledEmptyCart>
             <StyledText tag="h4">Sua sacola está vazia</StyledText>
@@ -51,24 +52,28 @@ const CartModal = () => {
           </StyledEmptyCart>
         )}
 
-        <StyledTotalCart>
-          <div className="flex between">
-            <StyledText tag="h4">Total</StyledText>
-            <StyledText tag="h4">
-              R$ {sum.toFixed(2).replace(".", ",")}
-            </StyledText>
-          </div>
-          <StyledButton
-            buttonSize="default"
-            buttonStyle="darkGrey"
-            onClick={() => {
-              setCart([]);
-              setIsModalVisible(false);
-            }}
-          >
-            Remover todos
-          </StyledButton>
-        </StyledTotalCart>
+        {cart.length > 0 ? (
+          <StyledTotalCart>
+            <div className="flex between">
+              <StyledText tag="h4">Total</StyledText>
+              <StyledText tag="h4">
+                R$ {sum.toFixed(2).replace(".", ",")}
+              </StyledText>
+            </div>
+            <StyledButton
+              buttonSize="default"
+              buttonStyle="secondary"
+              onClick={() => {
+                setCart([]);
+                setIsModalVisible(false);
+              }}
+            >
+              Remover todos
+            </StyledButton>
+          </StyledTotalCart>
+        ) : (
+          ""
+        )}
       </StyledModalBox>
     </StyledModalBg>
   );
