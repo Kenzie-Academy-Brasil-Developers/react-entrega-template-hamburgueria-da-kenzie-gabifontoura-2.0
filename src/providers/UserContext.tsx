@@ -117,6 +117,9 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   function userLogout() {
     localStorage.removeItem("@TOKEN");
+    localStorage.removeItem("@USERid");
+    localStorage.removeItem("@CURRENT_SALE");
+
     setUser(null);
     navigate("/");
   }

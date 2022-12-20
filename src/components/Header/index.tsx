@@ -8,10 +8,23 @@ import { StyledHeader } from "./styles";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import { ImSearch } from "react-icons/im";
 import { RxExit } from "react-icons/rx";
+import { MdDarkMode } from "react-icons/md";
 
 const Header = () => {
   const { userLogout } = useContext(UserContext);
-  const { search, setSearch } = useContext(CartContext);
+  const { search, setSearch, setIsModalVisible, cart } =
+    useContext(CartContext);
+
+  const count = cart.map((product) => {
+    return product.count;
+  });
+
+  const sumItens = count.reduce(
+    (accumulator: number | undefined, currentValue: number | undefined) => {
+      return Number(accumulator) + Number(currentValue);
+    },
+    0
+  );
 
   return (
     <StyledHeader>
@@ -27,15 +40,26 @@ const Header = () => {
             placeholder="Pesquise aqui"
             value={search}
             onChange={(event) => {
-              setSearch(event.target.value)}}
+              setSearch(event.target.value);
+            }}
           />
 
           <ImSearch className="lupa" />
 
-          <RiShoppingCart2Fill className="cartIcon" />
+          <MdDarkMode className="darkmode" />
+
+          <div
+            className="cart"
+            onClick={() => {
+              setIsModalVisible(true);
+            }}
+          >
+            <RiShoppingCart2Fill className="cartIcon" />
+
+            <span className="countItens">{sumItens}</span>
+          </div>
 
           <RxExit className="exit" onClick={() => userLogout()} />
-         
         </nav>
       </ContainerHome>
     </StyledHeader>

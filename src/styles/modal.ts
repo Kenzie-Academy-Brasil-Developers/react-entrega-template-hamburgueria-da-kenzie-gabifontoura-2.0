@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const StyledModalBg = styled.section`
@@ -12,13 +13,16 @@ export const StyledModalBg = styled.section`
   z-index: 99;
 `;
 
+
+
 export const StyledModalBox = styled.div`
+
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 400px;
   height: max-content;
-  background-color: var(--color-grey-3);
+  background-color: var(--color-grey-4);
   justify-content: center;
   align-items: center;
   border-radius: var(--radius-2);
