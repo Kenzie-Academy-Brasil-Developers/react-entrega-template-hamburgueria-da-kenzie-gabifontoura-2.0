@@ -22,7 +22,7 @@ export const StyledModalBox = styled.div`
   width: 100%;
   max-width: 400px;
   height: max-content;
-  background-color: var(--color-grey-4);
+  background-color: ${({theme}) => theme.colors.colorGrey1};
   justify-content: center;
   align-items: center;
   border-radius: var(--radius-2);
@@ -31,7 +31,7 @@ export const StyledModalBox = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background-color: var(--color-brand-1);
+    background-color: ${({theme}) => theme.colors.colorBrand1};
     padding: 1rem;
   }
 `;

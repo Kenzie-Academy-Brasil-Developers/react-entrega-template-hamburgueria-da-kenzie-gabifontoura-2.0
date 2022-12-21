@@ -7,6 +7,7 @@ import {
 } from "react";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
+import { getProductsApi } from "../services/getProducts";
 import { UserContext } from "./UserContext";
 
 interface iCartProps {
@@ -20,11 +21,6 @@ export interface iProduct {
   price: number;
   img: string;
   count?: number | undefined;
-}
-
-interface iProductsResponse {
-
-  data: iProduct[];
 }
 
 interface iCartProviderData {
@@ -49,8 +45,6 @@ interface iCartProviderData {
   isModalVisible: boolean | null;
 
   setIsModalVisible: React.Dispatch<React.SetStateAction<boolean | null>>;
-
- 
 }
 
 export const CartContext = createContext<iCartProviderData>(
@@ -58,47 +52,50 @@ export const CartContext = createContext<iCartProviderData>(
 );
 
 export const CartProvider = ({ children }: iCartProps) => {
+  const localStorageCart = localStorage.getItem("@CURRENT_SALE");
 
-    const localStorageCart = localStorage.getItem("@CURRENT_SALE");
-
-  const [cart, setCart] = useState<iProduct[]>(localStorageCart ? JSON.parse(localStorageCart) : []);
+  const [cart, setCart] = useState<iProduct[]>(
+    localStorageCart ? JSON.parse(localStorageCart) : []
+  );
   const [products, setProducts] = useState<iProduct[]>([]);
   const [search, setSearch] = useState("");
   const [isModalVisible, setIsModalVisible] = useState<boolean | null>(null);
 
   const { setGlobalLoading } = useContext(UserContext);
 
-  useEffect(() => {
-    const token = localStorage.getItem("@TOKEN");
+  const token = localStorage.getItem("@TOKEN");
 
+  async function getProductsApi() {
+    const response = await api.get<iProduct[]>("/products", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  }
+
+  useEffect(() => {
+    cart.length > 0 &&
+      localStorage.setItem("@CURRENT_SALE", JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
     if (token) {
-      (async (): Promise<iProductsResponse | undefined> => {
+      const handleGetProducts = async () => {
         try {
           setGlobalLoading(true);
-          const response = await api.get<iProductsResponse, any>("/products", {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
+          const response = await getProductsApi();
 
-          const productsListAPI = response.data;
-
-          setProducts(productsListAPI);
-
-          return response;
+          setProducts(response);
         } catch (error) {
           console.log(error);
         } finally {
           setGlobalLoading(false);
         }
-      })();
+      };
+      handleGetProducts();
     }
-  }, []);
-
-
-  useEffect(() => {
-    localStorage.setItem("@CURRENT_SALE", JSON.stringify(cart));
-  }, [cart]);
+  }, [token]);
 
   const addProduct = (product: iProduct) => {
     toast.success(`${product.name} foi adicionado a sacola de compras`);
@@ -144,7 +141,7 @@ export const CartProvider = ({ children }: iCartProps) => {
   const filteredProducts = products.filter(
     (product: iProduct) =>
       product.name.toLowerCase().includes(search.toLowerCase()) ||
-      product.category.toLowerCase().includes(search.toLowerCase())
+      product.category.toLowerCase().includes(search.toLowerCase()) 
   );
 
   return (

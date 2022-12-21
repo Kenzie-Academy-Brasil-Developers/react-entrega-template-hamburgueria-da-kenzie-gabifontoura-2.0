@@ -1,20 +1,19 @@
-
-import SignUpForm from '../../components/forms/SignUpForm'
-import { ContainerForms } from '../../styles/Containers'
-import { StyledText } from '../../styles/typography'
-import { StyledRegisterPage } from './styles'
+import SignUpForm from "../../components/forms/SignUpForm";
+import { ContainerForm } from "../../styles/Containers";
+import { StyledText } from "../../styles/typography";
+import { StyledRegisterPage } from "./styles";
 
 const RegisterPage = () => {
   return (
     <StyledRegisterPage>
-    <ContainerForms>
-    
-      <StyledText tag="h1" fontSize="one">Burgers</StyledText>
-      <SignUpForm />
+      <ContainerForm>
+        <StyledText tag="h1" fontSize="one" textAlign="center">
+          Burgers
+        </StyledText>
+        <SignUpForm />
+      </ContainerForm>
+    </StyledRegisterPage>
+  );
+};
 
-    </ContainerForms>
-  </StyledRegisterPage>
-  )
-}
-
-export default RegisterPage
+export default RegisterPage;

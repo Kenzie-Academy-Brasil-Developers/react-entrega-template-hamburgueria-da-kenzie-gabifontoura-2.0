@@ -77,11 +77,16 @@ export const GlobalStyle = createGlobalStyle`
         align-items: center;
     }
 
-    .gap-1rem{
-        gap:1rem;
+    .end{
+        align-items: end;
     }
+
     .gap-05rem{
         gap:0.5rem;
+    }
+    
+    .gap-1rem{
+        gap:1rem;
     }
     
 `;

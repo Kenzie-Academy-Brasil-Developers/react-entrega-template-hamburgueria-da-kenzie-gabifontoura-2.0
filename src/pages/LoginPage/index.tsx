@@ -1,18 +1,17 @@
-
 import LoginForm from "../../components/forms/LoginForm";
-import { ContainerForms } from "../../styles/Containers";
+import { ContainerForm } from "../../styles/Containers";
 import { StyledText } from "../../styles/typography";
 import { StyledLoginPage } from "./styles";
 
 const LoginPage = () => {
   return (
     <StyledLoginPage>
-      <ContainerForms>
-   
+      <ContainerForm>
+        <StyledText tag="h1" fontSize="one" textAlign="center">
+          Burgers
+        </StyledText>
         <LoginForm />
-        <StyledText tag="h1" fontSize="one">Burgers</StyledText>
-
-      </ContainerForms>
+      </ContainerForm>
     </StyledLoginPage>
   );
 };

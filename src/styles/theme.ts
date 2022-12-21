@@ -1,9 +1,9 @@
 export const mainTheme = {
     colors: {
-        colorBackGround: "#ffffff",
+        colorBackGround: "#f5f5f5",
         colorText:"#000000",
         
-        colorGrey1: "#F5F5F5",
+        colorGrey1: "#EAEAEA",
         colorGrey2:"#E0E0E0",
         colorGrey3:"#828282",
         colorGrey4:"#202020",
@@ -17,9 +17,9 @@ export const mainTheme = {
 export const darkTheme = {
     colors: {
         colorBackGround: "#000000",
-        colorText: "#ffffff",
+        colorText: "#f5f5f5",
 
-        colorGrey4: "#F5F5F5",
+        colorGrey4: "#EAEAEA",
         colorGrey3:"#E0E0E0",
         colorGrey2:"#828282",
         colorGrey1:"#202020",

@@ -3,37 +3,53 @@ import { CartContext, iProduct } from "../../../providers/CartContext";
 import { StyledButton } from "../../../styles/buttons";
 import { StyledText } from "../../../styles/typography";
 import { StyledCartCard } from "./styles";
+import { FaTrash } from "react-icons/fa";
 
 const CartCard = ({
-  product,
+  
   id,
   name,
   category,
   price,
   img,
   count,
-}: iProduct | any) => {
-  const { deleteProduct, addProduct, cart , setCart } = useContext(CartContext);
+}: iProduct) => {
+  const { deleteProduct, addProduct, cart, setCart } = useContext(CartContext);
+
+  const product = {
+    id,
+    name,
+    category,
+    price,
+    img,
+    count,
+  };
 
   return (
     <StyledCartCard>
       <div className="flex gap-1rem">
         <img src={img} alt={name} />
         <div className="flex column gap-1rem">
-          <StyledText tag="h3" fontSize="two" fontWeight={700} textAlign="left">
+          <StyledText tag="h3" fontSize="three" fontWeight={700} textAlign="left">
             {name}
           </StyledText>
 
-          <StyledText tag="h5" fontWeight={400}>
-            {category}
-          </StyledText>
+          <div className="flex gap-1rem align-center">
+            <StyledText tag="h5" fontWeight={400}>
+              R$ {price.toFixed(2).replace(".", ",")}
+            </StyledText>
+
+            <StyledText tag="h5" fontWeight={400}>
+              {category}
+            </StyledText>
+          </div>
         </div>
       </div>
 
-      <div className="flex column gap-1rem">
-        <div className="flex gap-05rem align-center counter">
+      <div className="flex column gap-1rem end">
+        <div className="flex gap-05rem align-center">
           <StyledButton
-            buttonStyle="primary"
+            buttonStyle="secondary"
             buttonSize="small"
             onClick={() => deleteProduct(product)}
           >
@@ -41,7 +57,7 @@ const CartCard = ({
           </StyledButton>
           <StyledText tag="h5">{<span>{count}</span>}</StyledText>
           <StyledButton
-            buttonStyle="primary"
+            buttonStyle="secondary"
             buttonSize="small"
             onClick={() => addProduct(product)}
           >
@@ -49,11 +65,15 @@ const CartCard = ({
           </StyledButton>
         </div>
 
-        <button onClick={() => setCart(
-        cart.filter(
-          (currentProduct) => currentProduct.id !== product.id
-        )
-      )}>Remover</button>
+        <button
+          onClick={() =>
+            setCart(
+              cart.filter((currentProduct) => currentProduct.id !== product.id)
+            )
+          }
+        >
+          <FaTrash className="trashIcon"/>
+        </button>
       </div>
     </StyledCartCard>
   );
