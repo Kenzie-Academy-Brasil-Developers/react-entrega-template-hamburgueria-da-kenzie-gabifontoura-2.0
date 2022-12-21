@@ -39,7 +39,7 @@ export const StyledHeader = styled.header`
   .lupa-mobile {
     color: ${({ theme }) => theme.colors.colorGrey4};
     margin-right: 0.5rem;
-    width: 1.25rem;
+    width: 1.35rem;
     height: max-content;
 
     @media (min-width: 700px) {
@@ -48,6 +48,7 @@ export const StyledHeader = styled.header`
   }
 
   .searchBarMobile{
+    margin-top: 1rem;
     @media (min-width: 700px) {
       display: none;
     }
@@ -61,26 +62,26 @@ export const StyledHeader = styled.header`
   }
 
   .cartBtn {
-    width: 1.25rem;
+    width: 1.35rem;
     height: max-content;
     cursor: pointer;
   }
 
   .cartIcon {
     color: ${({ theme }) => theme.colors.colorGrey4};
-    height: 1.25rem;
+    height: 1.35rem;
     width: 100%;
   }
 
   .exit {
     color: ${({ theme }) => theme.colors.colorGrey4};
-    height: 1.25rem;
+    height: 1.35rem;
     width: 100%;
   }
 
   .darkmode {
     color: ${({ theme }) => theme.colors.colorGrey4};
-    height: 1.25rem;
+    height: 1.35rem;
     width: 100%;
   }
 

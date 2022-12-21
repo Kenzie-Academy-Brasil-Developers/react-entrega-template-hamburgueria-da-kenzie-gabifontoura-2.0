@@ -32,25 +32,26 @@ const CartModal = () => {
           />
         </div>
 
-        {cart.length > 0 ? (
-          cart.map((product: iProduct) => (
-            <CartCard
-             
-              key={product.id}
-              id={product.id}
-              name={product.name}
-              category={product.category}
-              price={product.price}
-              img={product.img}
-              count={product.count}
-            />
-          ))
-        ) : (
-          <StyledEmptyCart>
-            <StyledText tag="h4">Sua sacola está vazia</StyledText>
-            <StyledText tag="h5">Adicione itens</StyledText>
-          </StyledEmptyCart>
-        )}
+        <ul className="cartList">
+          {cart.length > 0 ? (
+            cart.map((product: iProduct) => (
+              <CartCard
+                key={product.id}
+                id={product.id}
+                name={product.name}
+                category={product.category}
+                price={product.price}
+                img={product.img}
+                count={product.count}
+              />
+            ))
+          ) : (
+            <StyledEmptyCart>
+              <StyledText tag="h4">Sua sacola está vazia</StyledText>
+              <StyledText tag="h5">Adicione itens</StyledText>
+            </StyledEmptyCart>
+          )}
+        </ul>
 
         {cart.length > 0 ? (
           <StyledTotalCart>
@@ -70,7 +71,6 @@ const CartModal = () => {
             >
               Remover todos / Finalizar compra
             </StyledButton>
-        
           </StyledTotalCart>
         ) : (
           ""
