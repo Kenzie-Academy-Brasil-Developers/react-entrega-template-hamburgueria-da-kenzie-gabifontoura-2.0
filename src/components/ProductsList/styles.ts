@@ -5,6 +5,8 @@ export const StyledProductsList = styled.ul`
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   margin: 8rem 0;
+  min-height: 100vh;
+  height: max-content;
   
   @media (max-width: 1100px) {
     display: flex;

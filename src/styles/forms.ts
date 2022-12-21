@@ -9,10 +9,15 @@ export const StyledForm = styled.form`
   padding: 2rem;
   gap: 1rem;
   width: 100%;
-
-
+  max-width: 30rem;
   color: ${({theme}) => theme.colors.colorGrey4};
-  margin-top: 3rem;
+  align-self: center;
+
+
+  @media (max-width: 475px) {
+    max-width: 20rem;
+
+    }
 
 
   .main-nav-active {

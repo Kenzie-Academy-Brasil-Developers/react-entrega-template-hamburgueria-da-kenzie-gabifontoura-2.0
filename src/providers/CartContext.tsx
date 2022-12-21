@@ -7,6 +7,7 @@ import {
 } from "react";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
+import { getProductsApi } from "../services/getProducts";
 import { UserContext } from "./UserContext";
 
 interface iCartProps {
@@ -64,7 +65,7 @@ export const CartProvider = ({ children }: iCartProps) => {
 
   const token = localStorage.getItem("@TOKEN");
 
-  async function getApi() {
+  async function getProductsApi() {
     const response = await api.get<iProduct[]>("/products", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -74,11 +75,16 @@ export const CartProvider = ({ children }: iCartProps) => {
   }
 
   useEffect(() => {
+    cart.length > 0 &&
+      localStorage.setItem("@CURRENT_SALE", JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
     if (token) {
       const handleGetProducts = async () => {
         try {
           setGlobalLoading(true);
-          const response = await getApi();
+          const response = await getProductsApi();
 
           setProducts(response);
         } catch (error) {
@@ -90,11 +96,6 @@ export const CartProvider = ({ children }: iCartProps) => {
       handleGetProducts();
     }
   }, [token]);
-
-  useEffect(() => {
-    cart.length > 0 &&
-      localStorage.setItem("@CURRENT_SALE", JSON.stringify(cart));
-  }, [cart]);
 
   const addProduct = (product: iProduct) => {
     toast.success(`${product.name} foi adicionado a sacola de compras`);
@@ -140,7 +141,7 @@ export const CartProvider = ({ children }: iCartProps) => {
   const filteredProducts = products.filter(
     (product: iProduct) =>
       product.name.toLowerCase().includes(search.toLowerCase()) ||
-      product.category.toLowerCase().includes(search.toLowerCase())
+      product.category.toLowerCase().includes(search.toLowerCase()) 
   );
 
   return (

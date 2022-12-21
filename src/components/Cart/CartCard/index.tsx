@@ -47,9 +47,9 @@ const CartCard = ({
       </div>
 
       <div className="flex column gap-1rem end">
-        <div className="flex gap-05rem align-center counter">
+        <div className="flex gap-05rem align-center">
           <StyledButton
-            buttonStyle="primary"
+            buttonStyle="secondary"
             buttonSize="small"
             onClick={() => deleteProduct(product)}
           >
@@ -57,7 +57,7 @@ const CartCard = ({
           </StyledButton>
           <StyledText tag="h5">{<span>{count}</span>}</StyledText>
           <StyledButton
-            buttonStyle="primary"
+            buttonStyle="secondary"
             buttonSize="small"
             onClick={() => addProduct(product)}
           >

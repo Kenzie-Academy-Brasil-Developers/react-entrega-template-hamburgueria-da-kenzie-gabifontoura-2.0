@@ -81,11 +81,12 @@ export const GlobalStyle = createGlobalStyle`
         align-items: end;
     }
 
-    .gap-1rem{
-        gap:1rem;
-    }
     .gap-05rem{
         gap:0.5rem;
+    }
+    
+    .gap-1rem{
+        gap:1rem;
     }
     
 `;

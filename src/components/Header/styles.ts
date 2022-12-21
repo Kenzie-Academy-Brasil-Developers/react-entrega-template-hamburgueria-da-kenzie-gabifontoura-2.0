@@ -9,10 +9,6 @@ export const StyledHeader = styled.header`
   height: 6rem;
   padding: 1rem;
 
-  @media (max-width: 400px) {
-    flex-direction: column;
-    
-  }
 
   .nav {
     display: flex;
@@ -20,10 +16,8 @@ export const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
 
-
     @media (max-width: 400px) {
       gap: 1.5rem;
-
     }
   }
 
@@ -53,7 +47,14 @@ export const StyledHeader = styled.header`
     }
   }
 
+  .searchBarMobile{
+    @media (min-width: 700px) {
+      display: none;
+    }
+  }
+
   .searchBar {
+    
     @media (max-width: 700px) {
       display: none;
     }
@@ -94,10 +95,9 @@ export const StyledHeader = styled.header`
     align-items: center;
     position: absolute;
     top: 0.5rem;
-    
+
     @media (min-width: 700px) {
-      top:1.5rem;
-     
+      top: 1.5rem;
     }
   }
 `;

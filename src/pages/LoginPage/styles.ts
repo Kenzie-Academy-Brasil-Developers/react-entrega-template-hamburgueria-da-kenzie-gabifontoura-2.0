@@ -5,9 +5,7 @@ export const StyledLoginPage = styled.main`
   display: flex;
   flex-direction: column;
   border: none;
+  padding: 2rem 0 ;
   min-height: 100vh;
-  padding-top: 3rem;
-  width: 100%;
-  
-  
+
 `;

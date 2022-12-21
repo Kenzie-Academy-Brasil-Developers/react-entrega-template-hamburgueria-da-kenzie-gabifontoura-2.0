@@ -13,7 +13,7 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledInput = styled.input`
-  border: 1px solid ${({ theme }) => theme.colors.colorGrey3};
+  border: 1px solid ${({ theme }) => theme.colors.colorBrand2};
   border-radius: var(--radius-1);
   background-color: ${({ theme }) => theme.colors.colorBackGround};
   color: ${({ theme }) => theme.colors.colorText};

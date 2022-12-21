@@ -1,13 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CartContext } from "../../providers/CartContext";
 import { UserContext } from "../../providers/UserContext";
 import { Container } from "../../styles/Containers";
 import { StyledText } from "../../styles/typography";
 import InputField from "../InputField";
 import { StyledHeader } from "./styles";
-import { MdDarkMode, MdLightMode, MdLogout, MdSearch, MdShoppingCart } from "react-icons/md";
+import {
+  MdDarkMode,
+  MdLightMode,
+  MdLogout,
+  MdSearch,
+  MdShoppingCart,
+} from "react-icons/md";
 
 const Header = () => {
+  const [searchBar, setSearchBar] = useState(false);
   const { userLogout, darkMode, setDarkMode } = useContext(UserContext);
   const { search, setSearch, setIsModalVisible, cart } =
     useContext(CartContext);
@@ -43,10 +50,17 @@ const Header = () => {
           />
 
           <MdSearch className="lupa" />
-          <MdSearch className="lupa-mobile" />
 
-          <button  onClick={() => setDarkMode(!darkMode)}>
-            {darkMode ? <MdLightMode className="darkmode" /> : <MdDarkMode className="darkmode"/>}
+          <button onClick={() => setSearchBar(true)}>
+            <MdSearch className="lupa-mobile" />
+          </button>
+
+          <button onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? (
+              <MdLightMode className="darkmode" />
+            ) : (
+              <MdDarkMode className="darkmode" />
+            )}
           </button>
 
           <button
@@ -59,9 +73,27 @@ const Header = () => {
             <span className="countItens">{sumItens}</span>
           </button>
 
-          <button   onClick={() => userLogout()} ><MdLogout className="exit"/></button>
+          <button onClick={() => userLogout()}>
+            <MdLogout className="exit" />
+          </button>
         </nav>
       </Container>
+
+      {searchBar && (
+        <div className="searchBarMobile">
+
+          <InputField
+            type="search"
+            id="search"
+            label=""
+            placeholder="Pesquise aqui"
+            value={search}
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
+          />
+        </div>
+      )}
     </StyledHeader>
   );
 };

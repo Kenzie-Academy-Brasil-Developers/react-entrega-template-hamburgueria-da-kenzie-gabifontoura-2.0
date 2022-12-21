@@ -68,8 +68,9 @@ const CartModal = () => {
                 setIsModalVisible(false);
               }}
             >
-              Remover todos
+              Remover todos / Finalizar compra
             </StyledButton>
+        
           </StyledTotalCart>
         ) : (
           ""

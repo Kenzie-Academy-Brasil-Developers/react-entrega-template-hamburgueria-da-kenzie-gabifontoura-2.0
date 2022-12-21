@@ -46,8 +46,8 @@ const SignUpForm = () => {
 
   return (
     <StyledForm noValidate onSubmit={handleSubmit(submit)}>
-      <div className="flex between">
-        <StyledText tag="h2" fontSize="two" textAlign="center">
+      <div className="flex between gap-1rem">
+        <StyledText tag="h3" fontSize="three" textAlign="center">
           Crie sua conta
         </StyledText>
         <NavLink to="/" className="main-nav-active">
@@ -119,6 +119,8 @@ const SignUpForm = () => {
       >
         {globalLoading ? "Cadastrando..." : "Cadastrar"}
       </StyledButton>
+
+
     </StyledForm>
   );
 };

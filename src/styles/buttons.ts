@@ -46,11 +46,10 @@ export const StyledButton = styled.button<iStyledButtonProps>`
         return css`
           background-color:${({ theme }) => theme.colors.colorBrand1};;
           
-          
-
           &:hover {
             background-color:${({ theme }) => theme.colors.colorBrand2};
-            color: ${({ theme }) => theme.colors.colorText};
+            color: ${({ theme }) => theme.colors.colorGrey1};
+
           }
 
           }
@@ -62,11 +61,22 @@ export const StyledButton = styled.button<iStyledButtonProps>`
       case "secondary":
         return css`
           background-color: ${({ theme }) => theme.colors.colorGrey1};
+          border: 1px solid var(--color-brand-1) ;
 
-          color: ${({ theme }) => theme.colors.colorGrey4};
+          color: ${({ theme }) => theme.colors.colorText};
+          
+
+          &:hover {
+            background-color:${({ theme }) => theme.colors.colorBrand2};
+            
+
+          }
 
           &:disabled {
             background: var(--color-grey-3);
+          
+          ]
+
           }
         `;
     }

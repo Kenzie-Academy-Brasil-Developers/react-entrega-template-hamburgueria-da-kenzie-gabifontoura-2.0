@@ -5,7 +5,4 @@ export const StyledHomePage = styled.main`
   display: flex;
   flex-direction: column;
   border: none;
-  min-height: 100vh;
-  width: 100%;
- 
 `;

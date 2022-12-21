@@ -8,10 +8,7 @@ export const StyledCartCard = styled.li`
   position: sticky;
   width: 100%;
   
-  button{
-    color: var(--color-grey-1);
 
-  }
 
   &:hover {
     filter: brightness(1.2);
@@ -24,18 +21,15 @@ export const StyledCartCard = styled.li`
     background-color: ${({theme}) => theme.colors.colorBackGround};
   }
 
-  button:hover {
-    text-decoration: underline;
-  }
 
   .counter{
-    background-color: ${({theme}) => theme.colors.colorBackGround};
+    
     border-radius: var(--radius-1);
     padding: 0.25rem;
   }
 
   .trashIcon{
-    color: ${({theme}) => theme.colors.colorGrey3};;
+    color: ${({theme}) => theme.colors.colorGrey3};
   }
 `;
 
