@@ -48,8 +48,7 @@ export const StyledButton = styled.button<iStyledButtonProps>`
           
           &:hover {
             background-color:${({ theme }) => theme.colors.colorBrand2};
-            color: ${({ theme }) => theme.colors.colorGrey1};
-
+            color: #000;
           }
 
           }
@@ -68,7 +67,8 @@ export const StyledButton = styled.button<iStyledButtonProps>`
 
           &:hover {
             background-color:${({ theme }) => theme.colors.colorBrand2};
-            
+            color: #000;
+            font-weight: 600;
 
           }
 

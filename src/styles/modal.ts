@@ -22,10 +22,12 @@ export const StyledModalBox = styled.div`
   width: 100%;
   max-width: 400px;
   height: max-content;
+  max-height: 30rem;
   background-color: ${({theme}) => theme.colors.colorGrey1};
   justify-content: center;
   align-items: center;
   border-radius: var(--radius-2);
+  
 
   .modal-header {
     display: flex;
@@ -33,5 +35,9 @@ export const StyledModalBox = styled.div`
     width: 100%;
     background-color: ${({theme}) => theme.colors.colorBrand1};
     padding: 1rem;
+  }
+
+  .cartList{
+    overflow-y: auto;
   }
 `;
