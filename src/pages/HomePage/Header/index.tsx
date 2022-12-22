@@ -12,6 +12,8 @@ import {
   MdSearch,
   MdShoppingCart,
 } from "react-icons/md";
+import AnimationDelay from "../../../components/AnimationDelay.tsx";
+import { fadeInAnimation } from "../../../animations/fadeInModal";
 
 const Header = () => {
   const [searchBar, setSearchBar] = useState(false);
@@ -30,18 +32,15 @@ const Header = () => {
     0
   );
 
-  
-
   return (
     <StyledHeader>
       <Container>
         <StyledText tag="h1" fontSize="one">
           Burgers
         </StyledText>
-        <div   className="searchBar">
 
+        <div className="searchBar">
           <InputField
-          
             type="search"
             id="search"
             label=""
@@ -54,39 +53,38 @@ const Header = () => {
 
           <MdSearch className="lupa" />
         </div>
-      
 
+ 
           <button onClick={() => setSearchBar(!searchBar)}>
             <MdSearch className="lupa-mobile" />
           </button>
+       
 
-          <button onClick={() => setDarkMode(!darkMode)}>
-            {darkMode ? (
-              <MdLightMode className="darkmode" />
-            ) : (
-              <MdDarkMode className="darkmode" />
-            )}
-          </button>
+        <button onClick={() => setDarkMode(!darkMode)}>
+          {darkMode ? (
+            <MdLightMode className="darkmode" />
+          ) : (
+            <MdDarkMode className="darkmode" />
+          )}
+        </button>
 
-          <button
-            className="cartBtn"
-            onClick={() => {
-              setIsModalVisible(true);
-            }}
-          >
-            <MdShoppingCart className="cartIcon" />
-            <span className="countItens">{sumItens}</span>
-          </button>
+        <button
+          className="cartBtn"
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          <MdShoppingCart className="cartIcon" />
+          <span className="countItens">{sumItens}</span>
+        </button>
 
-          <button onClick={() => userLogout()}>
-            <MdLogout className="exit" />
-          </button>
-   
+        <button onClick={() => userLogout()}>
+          <MdLogout className="exit" />
+        </button>
       </Container>
 
       {searchBar && (
         <div className="searchBarMobile">
-
           <InputField
             type="search"
             id="search"

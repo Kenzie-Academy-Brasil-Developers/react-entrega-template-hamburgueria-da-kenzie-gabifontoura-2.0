@@ -10,7 +10,7 @@ interface iStyledTextProps{
 }
 
 export const StyledText = styled(BaseText)<iStyledTextProps>`
-  overflow: hidden;
+  
   justify-content: ${({ justifyContent }) => justifyContent};
   text-align: ${({ textAlign }) => textAlign};
   font-weight: ${({ fontWeight }) => fontWeight};

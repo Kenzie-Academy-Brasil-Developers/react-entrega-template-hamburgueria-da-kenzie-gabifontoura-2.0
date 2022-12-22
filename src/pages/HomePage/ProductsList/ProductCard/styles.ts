@@ -9,7 +9,7 @@ export const StyledProductCard = styled.li`
     border: 2px solid ${({ theme }) => theme.colors.colorBrand1};
   }
   height:100%;
-  max-height: 80rem;
+  max-height: 26.5rem;
 
   .content {
     display: flex;

@@ -1,7 +1,8 @@
 import { useContext } from "react";
-
 import { CgClose } from "react-icons/cg";
-import useOutClick from "../../../hooks/hookOutClick";
+import { fadeInAnimation } from "../../../animations/fadeInModal";
+import AnimationDelay from "../../../components/AnimationDelay.tsx";
+import useOutClick from "../../../components/hooks/hookOutClick";
 import { CartContext, iProduct } from "../../../providers/CartContext";
 import { StyledButton } from "../../../styles/buttons";
 import { StyledModalBg, StyledModalBox } from "../../../styles/modal";
@@ -22,6 +23,9 @@ const CartModal = () => {
 
   return (
     <StyledModalBg>
+      <AnimationDelay keyframe={fadeInAnimation} max={1}>
+
+
       <StyledModalBox ref={modalRef}>
         <div className="modal-header">
           <StyledText tag="h3" color="white">
@@ -46,10 +50,10 @@ const CartModal = () => {
                 price={product.price}
                 img={product.img}
                 count={product.count}
-              />
-            ))
-          ) : (
-            <StyledEmptyCart>
+                />
+                ))
+                ) : (
+                  <StyledEmptyCart>
               <StyledText tag="h4">Sua sacola está vazia</StyledText>
               <StyledText tag="h5">Adicione itens</StyledText>
             </StyledEmptyCart>
@@ -79,6 +83,9 @@ const CartModal = () => {
           ""
         )}
       </StyledModalBox>
+      
+      </AnimationDelay>
+
     </StyledModalBg>
   );
 };

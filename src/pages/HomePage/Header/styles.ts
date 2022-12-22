@@ -23,9 +23,6 @@ export const StyledHeader = styled.header`
     top: 0.85rem;
     right: 0.4rem;
 
-    @media (max-width: 700px) {
-      display: none;
-    }
   }
 
   .lupa-mobile {

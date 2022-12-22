@@ -8,7 +8,6 @@ export const StyledCartCard = styled.li`
   position: sticky;
   width: 100%;
   gap:1rem;
-  
 
 
   &:hover {

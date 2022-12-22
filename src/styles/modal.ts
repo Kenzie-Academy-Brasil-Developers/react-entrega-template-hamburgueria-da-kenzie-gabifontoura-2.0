@@ -10,15 +10,16 @@ export const StyledModalBg = styled.section`
   justify-content: center;
   align-items: center;
   z-index: 99;
+  
 `;
 
 export const StyledModalBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 400px;
   height: max-content;
   max-height: 30rem;
+  width: 100%;
+  max-width: 25rem;
   background-color: ${({ theme }) => theme.colors.colorGrey1};
   justify-content: center;
   align-items: center;
@@ -34,6 +35,8 @@ export const StyledModalBox = styled.div`
 
   .cartList {
     overflow-y: auto;
+    width: 100%;
+    
 
     /* width */
     ::-webkit-scrollbar {

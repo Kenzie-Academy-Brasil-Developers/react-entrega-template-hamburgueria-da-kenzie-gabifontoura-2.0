@@ -61,6 +61,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+
     (async () => {
       if (token) {
         try {

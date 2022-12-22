@@ -19,7 +19,7 @@ const ProtectedRoutes = () => {
   }, []);
   return (
     <>
-      {user ? (
+      {user && user ? (
         <Outlet />
       ) : (
         <StyledLoading>
