@@ -7,6 +7,7 @@ export const StyledCartCard = styled.li`
   justify-content: space-between;
   position: sticky;
   width: 100%;
+  gap:1rem;
   
 
 
@@ -19,13 +20,6 @@ export const StyledCartCard = styled.li`
     height: 4rem;
     object-fit: cover;
     background-color: ${({theme}) => theme.colors.colorBackGround};
-  }
-
-
-  .counter{
-    
-    border-radius: var(--radius-1);
-    padding: 0.25rem;
   }
 
   .trashIcon{

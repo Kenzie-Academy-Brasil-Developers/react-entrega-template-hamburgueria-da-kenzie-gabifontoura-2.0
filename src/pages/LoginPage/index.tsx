@@ -1,4 +1,4 @@
-import LoginForm from "../../components/forms/LoginForm";
+import LoginForm from "./LoginForm";
 import { ContainerForm } from "../../styles/Containers";
 import { StyledText } from "../../styles/typography";
 import { StyledLoginPage } from "./styles";

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import { CartContext } from "../../providers/CartContext";
-import { UserContext } from "../../providers/UserContext";
-import { Container } from "../../styles/Containers";
-import { StyledText } from "../../styles/typography";
-import InputField from "../InputField";
+import { CartContext } from "../../../providers/CartContext";
+import { UserContext } from "../../../providers/UserContext";
+import { Container } from "../../../styles/Containers";
+import { StyledText } from "../../../styles/typography";
+import InputField from "../../../components/InputField";
 import { StyledHeader } from "./styles";
 import {
   MdDarkMode,
@@ -30,15 +30,18 @@ const Header = () => {
     0
   );
 
+  
+
   return (
     <StyledHeader>
       <Container>
         <StyledText tag="h1" fontSize="one">
           Burgers
         </StyledText>
-        <nav className="nav">
+        <div   className="searchBar">
+
           <InputField
-            className="searchBar"
+          
             type="search"
             id="search"
             label=""
@@ -50,8 +53,10 @@ const Header = () => {
           />
 
           <MdSearch className="lupa" />
+        </div>
+      
 
-          <button onClick={() => setSearchBar(true)}>
+          <button onClick={() => setSearchBar(!searchBar)}>
             <MdSearch className="lupa-mobile" />
           </button>
 
@@ -76,7 +81,7 @@ const Header = () => {
           <button onClick={() => userLogout()}>
             <MdLogout className="exit" />
           </button>
-        </nav>
+   
       </Container>
 
       {searchBar && (

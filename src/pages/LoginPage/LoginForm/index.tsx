@@ -8,7 +8,7 @@ import { loginSchema } from "./loginSchema";
 
 import { StyledForm } from "../../../styles/forms";
 import { StyledText } from "../../../styles/typography";
-import InputField from "../../InputField";
+import InputField from "../../../components/InputField";
 import { StyledButton } from "../../../styles/buttons";
 import { UserContext } from "../../../providers/UserContext";
 

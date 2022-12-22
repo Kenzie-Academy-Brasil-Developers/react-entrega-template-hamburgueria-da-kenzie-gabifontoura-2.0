@@ -1,11 +1,14 @@
 import { useContext } from "react";
-import { StyledModalBg, StyledModalBox } from "../../styles/modal";
-import { StyledText } from "../../styles/typography";
+
 import { CgClose } from "react-icons/cg";
-import { CartContext, iProduct } from "../../providers/CartContext";
-import useOutClick from "../../hooks/hookOutClick";
+import useOutClick from "../../../hooks/hookOutClick";
+import { CartContext, iProduct } from "../../../providers/CartContext";
+import { StyledButton } from "../../../styles/buttons";
+import { StyledModalBg, StyledModalBox } from "../../../styles/modal";
+import { StyledText } from "../../../styles/typography";
+
 import CartCard from "./CartCard";
-import { StyledButton } from "../../styles/buttons";
+
 import { StyledEmptyCart, StyledTotalCart } from "./styles";
 
 const CartModal = () => {

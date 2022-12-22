@@ -1,7 +1,6 @@
 import { useContext } from "react";
-import { CartContext, iProduct } from "../../providers/CartContext";
+import { CartContext, iProduct } from "../../../providers/CartContext";
 import ProductCard from "./ProductCard";
-
 import { StyledProductsList } from "./styles";
 
 const ProductsList = () => {
