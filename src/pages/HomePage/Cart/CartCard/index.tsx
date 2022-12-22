@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { CartContext, iProduct } from "../../../providers/CartContext";
-import { StyledButton } from "../../../styles/buttons";
-import { StyledText } from "../../../styles/typography";
+
 import { StyledCartCard } from "./styles";
 import { FaTrash } from "react-icons/fa";
+import { iProduct, CartContext } from "../../../../providers/CartContext";
+import { StyledButton } from "../../../../styles/buttons";
+import { StyledText } from "../../../../styles/typography";
 
 const CartCard = ({
   
@@ -37,10 +38,6 @@ const CartCard = ({
           <div className="flex gap-1rem align-center">
             <StyledText tag="h5" fontWeight={400}>
               R$ {price.toFixed(2).replace(".", ",")}
-            </StyledText>
-
-            <StyledText tag="h5" fontWeight={400}>
-              {category}
             </StyledText>
           </div>
         </div>

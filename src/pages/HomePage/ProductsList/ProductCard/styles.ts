@@ -8,13 +8,15 @@ export const StyledProductCard = styled.li`
     filter: brightness(1.2);
     border: 2px solid ${({ theme }) => theme.colors.colorBrand1};
   }
+  height:100%;
+  max-height: 26.5rem;
 
   .content {
     display: flex;
     flex-direction: column;
     padding: 2rem 1rem;
-    width: 13rem;
-    height: 17rem;
+    width: 15rem;
+    height: 15rem;
     justify-content: space-between;
   }
   img {

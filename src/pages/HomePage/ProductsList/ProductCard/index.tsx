@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { CartContext, iProduct } from "../../../providers/CartContext";
-import { StyledButton } from "../../../styles/buttons";
-import { StyledText } from "../../../styles/typography";
+import { iProduct, CartContext } from "../../../../providers/CartContext";
+import { StyledButton } from "../../../../styles/buttons";
+import { StyledText } from "../../../../styles/typography";
+
 import { StyledProductCard } from "./styles";
 
 const ProductCard = ({ id, name, category, price, img, count }: iProduct) => {

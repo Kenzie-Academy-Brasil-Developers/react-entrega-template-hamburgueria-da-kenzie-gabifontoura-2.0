@@ -7,18 +7,9 @@ export const StyledHeader = styled.header`
   top: 0;
   z-index: 1;
   height: 6rem;
-  padding: 1rem;
-
-
-  .nav {
-    display: flex;
-    gap: 2rem;
-    justify-content: space-between;
-    align-items: center;
-
-    @media (max-width: 400px) {
-      gap: 1.5rem;
-    }
+  padding: 1.5rem 1rem;
+  @media (max-width: 400px) {
+    padding: 2rem 1rem;
   }
 
   .lupa {
@@ -29,11 +20,9 @@ export const StyledHeader = styled.header`
     padding: 0.65rem;
     border-radius: var(--radius-2);
     position: absolute;
-    top: 1.8rem;
-    margin-left: 12.25rem;
-    @media (max-width: 700px) {
-      display: none;
-    }
+    top: 0.85rem;
+    right: 0.4rem;
+
   }
 
   .lupa-mobile {
@@ -47,15 +36,20 @@ export const StyledHeader = styled.header`
     }
   }
 
-  .searchBarMobile{
-    margin-top: 1rem;
+  .searchBarMobile {
+    margin-top: 0.5rem;
+
     @media (min-width: 700px) {
       display: none;
     }
   }
 
   .searchBar {
-    
+    margin-left: 5rem;
+    max-width: 30rem;
+    width: 100%;
+    position: relative;
+
     @media (max-width: 700px) {
       display: none;
     }
@@ -65,24 +59,37 @@ export const StyledHeader = styled.header`
     width: 1.35rem;
     height: max-content;
     cursor: pointer;
+
+    @media (max-width: 400px) {
+      width: 1.35rem;
+    }
   }
 
   .cartIcon {
     color: ${({ theme }) => theme.colors.colorGrey4};
     height: 1.35rem;
     width: 100%;
+    @media (max-width: 400px) {
+      height: 1.35rem;
+    }
   }
 
   .exit {
     color: ${({ theme }) => theme.colors.colorGrey4};
     height: 1.35rem;
     width: 100%;
+    @media (max-width: 400px) {
+      height: 1.35rem;
+    }
   }
 
   .darkmode {
     color: ${({ theme }) => theme.colors.colorGrey4};
     height: 1.35rem;
     width: 100%;
+    @media (max-width: 400px) {
+      height: 1.35rem;
+    }
   }
 
   .countItens {
@@ -95,7 +102,7 @@ export const StyledHeader = styled.header`
     border-radius: var(--radius-2);
     align-items: center;
     position: absolute;
-    top: 0.5rem;
+    top: 1.5rem;
 
     @media (min-width: 700px) {
       top: 1.5rem;

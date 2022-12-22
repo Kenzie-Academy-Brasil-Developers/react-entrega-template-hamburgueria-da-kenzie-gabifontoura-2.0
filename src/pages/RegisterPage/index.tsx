@@ -1,4 +1,4 @@
-import SignUpForm from "../../components/forms/SignUpForm";
+import SignUpForm from "./SignUpForm";
 import { ContainerForm } from "../../styles/Containers";
 import { StyledText } from "../../styles/typography";
 import { StyledRegisterPage } from "./styles";

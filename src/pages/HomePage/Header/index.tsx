@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import { CartContext } from "../../providers/CartContext";
-import { UserContext } from "../../providers/UserContext";
-import { Container } from "../../styles/Containers";
-import { StyledText } from "../../styles/typography";
-import InputField from "../InputField";
+import { CartContext } from "../../../providers/CartContext";
+import { UserContext } from "../../../providers/UserContext";
+import { Container } from "../../../styles/Containers";
+import { StyledText } from "../../../styles/typography";
+import InputField from "../../../components/InputField";
 import { StyledHeader } from "./styles";
 import {
   MdDarkMode,
@@ -12,6 +12,8 @@ import {
   MdSearch,
   MdShoppingCart,
 } from "react-icons/md";
+import AnimationDelay from "../../../components/AnimationDelay.tsx";
+import { fadeInAnimation } from "../../../animations/fadeInModal";
 
 const Header = () => {
   const [searchBar, setSearchBar] = useState(false);
@@ -36,9 +38,9 @@ const Header = () => {
         <StyledText tag="h1" fontSize="one">
           Burgers
         </StyledText>
-        <nav className="nav">
+
+        <div className="searchBar">
           <InputField
-            className="searchBar"
             type="search"
             id="search"
             label=""
@@ -50,38 +52,39 @@ const Header = () => {
           />
 
           <MdSearch className="lupa" />
+        </div>
 
-          <button onClick={() => setSearchBar(true)}>
+ 
+          <button onClick={() => setSearchBar(!searchBar)}>
             <MdSearch className="lupa-mobile" />
           </button>
+       
 
-          <button onClick={() => setDarkMode(!darkMode)}>
-            {darkMode ? (
-              <MdLightMode className="darkmode" />
-            ) : (
-              <MdDarkMode className="darkmode" />
-            )}
-          </button>
+        <button onClick={() => setDarkMode(!darkMode)}>
+          {darkMode ? (
+            <MdLightMode className="darkmode" />
+          ) : (
+            <MdDarkMode className="darkmode" />
+          )}
+        </button>
 
-          <button
-            className="cartBtn"
-            onClick={() => {
-              setIsModalVisible(true);
-            }}
-          >
-            <MdShoppingCart className="cartIcon" />
-            <span className="countItens">{sumItens}</span>
-          </button>
+        <button
+          className="cartBtn"
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          <MdShoppingCart className="cartIcon" />
+          <span className="countItens">{sumItens}</span>
+        </button>
 
-          <button onClick={() => userLogout()}>
-            <MdLogout className="exit" />
-          </button>
-        </nav>
+        <button onClick={() => userLogout()}>
+          <MdLogout className="exit" />
+        </button>
       </Container>
 
       {searchBar && (
         <div className="searchBarMobile">
-
           <InputField
             type="search"
             id="search"

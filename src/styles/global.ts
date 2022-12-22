@@ -60,6 +60,9 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "Inter", sans-serif;
     }
 
+
+    
+
     .flex{
         display: flex;
     }
@@ -89,4 +92,25 @@ export const GlobalStyle = createGlobalStyle`
         gap:1rem;
     }
     
+     /* width */
+     ::-webkit-scrollbar {
+      width: 0.5rem;
+      border-radius: var(--radius-2);
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: var(--color-grey-2);
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background:var(--color-grey-3);
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-brand-2);
+    }
+
 `;

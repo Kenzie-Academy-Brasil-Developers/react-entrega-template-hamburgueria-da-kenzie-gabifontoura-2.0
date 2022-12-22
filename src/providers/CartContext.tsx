@@ -6,7 +6,6 @@ import {
   useState,
 } from "react";
 import { toast } from "react-toastify";
-import { api } from "../services/api";
 import { getProductsApi } from "../services/getProducts";
 import { UserContext } from "./UserContext";
 
@@ -63,16 +62,6 @@ export const CartProvider = ({ children }: iCartProps) => {
 
   const { setGlobalLoading } = useContext(UserContext);
 
-  const token = localStorage.getItem("@TOKEN");
-
-  async function getProductsApi() {
-    const response = await api.get<iProduct[]>("/products", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response.data;
-  }
 
   useEffect(() => {
     cart.length > 0 &&
@@ -80,6 +69,8 @@ export const CartProvider = ({ children }: iCartProps) => {
   }, [cart]);
 
   useEffect(() => {
+  const token = localStorage.getItem("@TOKEN");
+
     if (token) {
       const handleGetProducts = async () => {
         try {
@@ -95,7 +86,7 @@ export const CartProvider = ({ children }: iCartProps) => {
       };
       handleGetProducts();
     }
-  }, [token]);
+  }, []);
 
   const addProduct = (product: iProduct) => {
     toast.success(`${product.name} foi adicionado a sacola de compras`);

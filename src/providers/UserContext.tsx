@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
 import { AxiosError } from "axios";
-import { iLoginFormValues } from "../components/forms/LoginForm";
-import { iRegisterFormValues } from "../components/forms/SignUpForm";
+import { iLoginFormValues } from "../pages/LoginPage/LoginForm";
+import { iRegisterFormValues } from "../pages/RegisterPage/SignUpForm";
+import { getUser } from "../services/getUser";
 
 interface iDefaultErrorResponse {
   error: string;
@@ -14,7 +15,7 @@ interface iDefaultErrorResponse {
 interface iUserProviderProps {
   children: React.ReactNode;
 }
-interface iUser {
+export interface iUser {
   id: number;
   name: string;
   email: string;
@@ -45,9 +46,10 @@ export const UserContext = createContext<iUserContext>({} as iUserContext);
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
   const themeStorage = localStorage.getItem("@THEME_PREFERENCE");
+  const token = localStorage.getItem("@TOKEN");
 
   const [globalLoading, setGlobalLoading] = useState(false);
-  const [user, setUser] = useState<iUser | any>(null);
+  const [user, setUser] = useState<iUser | null>(null);
   const [darkMode, setDarkMode] = useState<boolean>(
     themeStorage ? JSON.parse(themeStorage) : true
   );
@@ -59,18 +61,12 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("@TOKEN");
-    const userID = localStorage.getItem("@USERid");
 
     (async () => {
       if (token) {
         try {
           setGlobalLoading(true);
-          const response = await api.get("/users/" + userID, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
+          const response = await getUser();
 
           setUser(response);
 
@@ -88,6 +84,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     try {
       setGlobalLoading(true);
       const response = await api.post<iRegisterResponse>("/users", formData);
+
       toast.success(response.statusText);
     } catch (error) {
       const currentError = error as AxiosError<iDefaultErrorResponse>;
@@ -105,7 +102,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       localStorage.setItem("@TOKEN", response.data.accessToken);
       localStorage.setItem("@USERid", response.data.user.id + "");
 
-      toast.success(response.statusText);
       setUser(response.data.user);
 
       navigate("/home");

@@ -14,11 +14,12 @@ export const ContainerForm = styled.main`
 export const Container = styled.main`
   width: 100%;
   height: max-content;
-  max-width: 1100px;
+  max-width: 1070px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  align-items: center;
 
 
 `;

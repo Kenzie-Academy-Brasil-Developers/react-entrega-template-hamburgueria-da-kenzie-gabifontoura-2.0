@@ -7,7 +7,7 @@ export const StyledProductsList = styled.ul`
   margin: 8rem 0;
   min-height: 100vh;
   height: max-content;
-  
+
   @media (max-width: 1100px) {
     display: flex;
     grid-template-columns: repeat(2, 1fr);
@@ -15,5 +15,6 @@ export const StyledProductsList = styled.ul`
     overflow-x: auto;
     gap: 1rem;
     padding: 1rem;
+    min-height: 80vh;
   }
 `;

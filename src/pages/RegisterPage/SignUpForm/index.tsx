@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { StyledButton } from "../../../styles/buttons";
 import { StyledForm } from "../../../styles/forms";
 import { StyledText } from "../../../styles/typography";
-import InputField from "../../InputField";
+import InputField from "../../../components/InputField";
 import { registerSchema } from "./registerSchema";
 import { UserContext } from "../../../providers/UserContext";
 import { NavLink } from "react-router-dom";
