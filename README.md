@@ -1,6 +1,12 @@
 # BURGERS
 
 E-commerce desenvolvido em Typescript, React, Styled-Components, React-Icons, Toastify, React-Hook-Form, Yup, Axios, Router-DOM com Proteção de Rotas, verificação de usuário por token e Autologin, feito para exercício de conceitos como props, children, localStorage, useState, useEffect, useNavigate, useContext e keyframes.
+<br>
+<br>
+Acesse:<br>
+MVP: https://react-entrega-template-hamburgueria-da-kenzie-gabifontoura.vercel.app/
+<br>
+Projeto Final: https://react-entrega-template-hamburgueria-da-kenzie-gabifontoura-2-0.vercel.app/
 
 ## Getting Started with Create React App
 
