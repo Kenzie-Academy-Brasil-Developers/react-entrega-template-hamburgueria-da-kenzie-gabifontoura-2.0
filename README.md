@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+#BURGERS
+
+E-commerce desenvolvido em Typescript, React, Styled-Components, React-Icons, Toastify, React-Hook-Form, Yup, Axios, Router-DOM com Proteção de Rotas, verificação de usuário por token e Autologin, feito para exercício de conceitos como props, children, localStorage, useState, useEffect, useNavigate, useContext e keyframes.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
